@@ -1,4 +1,4 @@
-class Group::MembersController < ApplicationController
+class Groups::MembersController < ApplicationController
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
 
   # GET /group/members
@@ -25,10 +25,11 @@ class Group::MembersController < ApplicationController
   # POST /group/members.json
   def create
     @group_member = Group::Member.new(group_member_params)
+    @group_member.group = @group
 
     respond_to do |format|
       if @group_member.save
-        format.html { redirect_to @group_member, notice: 'Member was successfully created.' }
+        format.html { redirect_to group_member_path(@group.id, @group_member.id), notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @group_member }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class Group::MembersController < ApplicationController
   def update
     respond_to do |format|
       if @group_member.update(group_member_params)
-        format.html { redirect_to @group_member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to group_member_path(@group.id, @group_member.id), notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @group_member }
       else
         format.html { render :edit }
@@ -62,6 +63,12 @@ class Group::MembersController < ApplicationController
   end
 
   private
+
+  before_action :set_group
+
+  def set_group
+    @group = Group.find_by!(id: params[:group_id])
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_group_member
       @group_member = Group::Member.find(params[:id])

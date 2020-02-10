@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  namespace :group do
-    resources :members
+
+  resources :groups do
+    resources :members, module: :groups
   end
-  resources :groups
   devise_for :users
   authenticated :user do
     root to: 'groups#index', as: :authenticated_root
