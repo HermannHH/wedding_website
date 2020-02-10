@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  namespace :group do
+    resources :members
+  end
+  resources :groups
   devise_for :users
+  authenticated :user do
+    root to: 'groups#index', as: :authenticated_root
+  end
   root to: "home#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
