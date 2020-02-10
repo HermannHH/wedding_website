@@ -31,6 +31,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+    # https://github.com/deivid-rodriguez/pry-byebug
+  gem 'pry-byebug'
+
+  # https://github.com/ryanb/letter_opener
+  gem 'letter_opener'
+
 end
 
 group :development do
@@ -40,7 +47,32 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # https://github.com/haml/html2haml
+  gem 'html2haml'
+
+  # https://github.com/ctran/annotate_models
+  gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+
+  # https://github.com/BetterErrors/better_errors
+  gem 'better_errors'
+
+  # https://github.com/banister/binding_of_caller
+  gem 'binding_of_caller'
+
+  # https://github.com/flyerhzm/bullet
+  gem 'bullet'
+
+  # https://github.com/faker-ruby/faker
+  gem 'faker'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# https://github.com/mfung/hamlit-rails
+gem 'hamlit-rails'
+
+# https://github.com/heartcombo/devise
+gem 'devise'
