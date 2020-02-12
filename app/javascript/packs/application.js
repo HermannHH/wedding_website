@@ -16,4 +16,11 @@ require("css/application.scss")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import "controllers"
+import "controllers";
+import Glide, { Controls, Breakpoints, Swipe } from '@glidejs/glide/dist/glide.modular.esm';
+
+
+
+document.addEventListener("turbolinks:load", function() {
+  new Glide('.glide').mount({ Controls, Breakpoints, Swipe });
+});

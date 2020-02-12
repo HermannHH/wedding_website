@@ -4,4 +4,5 @@ class HomeController < ApplicationController
 
   private
 
+  skip_before_action :authenticate_user!
 end

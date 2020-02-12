@@ -1,2 +1,40 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+-# Navbar
+%nav.w-full.p-4.bg-red-500.bottom-0.z-50.absolute{ data: { controller: "navbar"}}
+
+-# Cover
+.flex.w-full.h-screen
+  .glide
+    .glide__track{"data-glide-el" => "track"}
+      %ul.glide__slides
+        %li.glide__slide.w-full.h-screen
+          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
+        %li.glide__slide.w-full.h-screen
+          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
+        %li.glide__slide.w-full.h-screen
+          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
+    .glide__arrows{"data-glide-el" => "controls"}
+      %button.glide__arrow.glide__arrow--left{"data-glide-dir" => "<"} prev
+      %button.glide__arrow.glide__arrow--right{"data-glide-dir" => ">"} next
+
+-# Blocks
+.p-40.flex.flex-wrap
+  %div{ class: "w-1/2 flex-shrink-0 "}
+    = image_tag 'https://placekitten.com/400/400', class: "w-full"
+  %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-200 flex flex-col justify-center"}
+    %h1.text-xl="The Groom"
+    %p
+      Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
+  %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-200 flex flex-col justify-center"}
+    %h1.text-xl="The Groom"
+    %p
+      Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
+  %div{ class: "w-1/2 flex-shrink-0 "}
+    = image_tag 'https://placekitten.com/400/400', class: "w-full"
+
+-# Timer
+.w-full.flex
+  = image_tag 'https://placekitten.com/400/100', class: "w-full"
+
+-# Video
+.border.border-blue-500.w-full.p-4
+  = video_tag("https://www.youtube.com/embed/V0hgJNpFlN")
