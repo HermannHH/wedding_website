@@ -557,3 +557,7 @@ $content-background-color: #2f2f2f;
   transition: background-color 350ms ease-in-out;
   transition: opacity 350ms ease-in-out;
 }
+
+.accordion-panel {
+  transition: visibility 350ms ease-in-out;
+}

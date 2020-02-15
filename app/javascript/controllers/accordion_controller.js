@@ -8,6 +8,9 @@ export default class extends Controller {
   }
 
   toggleItem(event) {
-    console.log('event', event)
+    const panel = event.currentTarget.querySelector('.accordion-panel');
+    // TODO: Check if has hidden class
+    panel.classList.toggle('hidden');
+
   }
 }
