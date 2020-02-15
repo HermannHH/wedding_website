@@ -53,6 +53,54 @@
   = get_video_iframe("https://www.youtube.com/watch?v=vDiFSzQEMOs")
 
 
--# -# Tests
--# .w-full.flex.justify-center
--#   = react_component('carousel', props: {}, html_class: 'flex flex-col self-center max-h-screen w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4')
+-# -# Invite Management
+.w-full.flex.py-20.bg-gray-100.justify-center
+  %div{ class: "flex flex-col w-2/3"}
+    .flex.w-full.pt-2.pb-12.justify-center
+      %h2.text-4xl.font-bold="Your party"
+    %section{ class: "w-2/3 shadow bg-white w-full"}
+      %article.border-b
+        .border-l-2.border-transparent
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-grey-800.font-thin.text-xl
+              Massa vitae tortor condimentum lacinia quis vel eros donec
+            .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "6 9 12 15 18 9"}
+      %article.border-b
+        .border-l-2.bg-grey-lightest.border-indigo-500
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-indigo-500.font-thin.text-xl
+              Lorem ipsum dolor sit amet
+            .rounded-full.border.border.border-indigo-500.w-7.h-7.flex.items-center.justify-center.bg-indigo
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "281", :fill => "none", :height => "24", :stroke => "white", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "18 15 12 9 6 15"}
+          %div
+            .pl-8.pr-8.pb-5.text-grey-800
+              %ul.pl-4
+                %li.pb-2
+                  consectetur adipiscing elit
+                %li.pb-2
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                %li.pb-2
+                  Viverra orci sagittis eu volutpat odio facilisis mauris
+      %article.border-b
+        .border-l-2.border-transparent
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-grey-800.font-thin.text-xl
+              Lorem dolor sed viverra ipsum
+            .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "6 9 12 15 18 9"}
+      %article.border-b
+        .border-l-2.border-transparent
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-grey-800.font-thin.text-xl
+              Egestas sed tempus urna
+            .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "6 9 12 15 18 9"}
