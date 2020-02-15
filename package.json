@@ -1,6 +1,9 @@
 {
   "name": "wedding_website",
   "private": true,
+  "scripts": {
+    "webpacker-dev": "./bin/webpack-dev-server"
+  },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
     "@rails/actioncable": "^6.0.0",
