@@ -21,6 +21,20 @@ import Glide, { Controls, Breakpoints, Swipe } from '@glidejs/glide/dist/glide.m
 
 
 
-document.addEventListener("turbolinks:load", function() {
-  new Glide('.glide').mount({ Controls, Breakpoints, Swipe });
-});
+// document.addEventListener("turbolinks:load", function() {
+//   new Glide('.glide').mount({ Controls, Breakpoints, Swipe });
+// });
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import Carousel from '../apps/carousel';
+
+// document.addEventListener("turbolinks:load", function() {
+//   var element = document.getElementById('tester');
+//   console.log('tester', tester)
+//   if(typeof(element) != 'undefined' && element != null){
+//     ReactDOM.render(
+//       <Carousel />,
+//       element.appendChild(document.createElement('div')),
+//     )
+//   }
+// });

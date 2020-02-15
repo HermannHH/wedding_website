@@ -10,26 +10,49 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  // static targets = [ "output" ]
+  static targets = [ "initialOffset" ]
 
   connect() {
+    this.initialOffsetTarget.innerHTML = this.element.offsetTop;
     window.addEventListener('scroll', this.stickyNavigation);
   }
 
   stickyNavigation = () => {
-    const offsetTop = this.element.offsetTop;
-    if (window.scrollY >= offsetTop) {
-      this.element.classList.remove('absolute');
-      this.element.classList.remove('bottom-0');
-      this.element.classList.add('top-0');
-      this.element.classList.add('fixed');
+    // Bottom
+    if (scrollY >= this.initialOffsetTarget.innerHTML) {
+      this.bottomOfWindowAdjustments();
+    // Top
     } else {
-      console.log('step 2');
-      this.element.classList.remove('fixed');
-      this.element.classList.remove('top-0');
-      this.element.classList.add('bottom-0');
-      this.element.classList.add('absolute');
+      this.topOfWindowAdjustments();
     }
+  }
+
+  bottomOfWindowAdjustments = () => {
+    this.element.classList.remove('bottom-0');
+    this.element.classList.add('top-0');
+
+    this.element.classList.remove('absolute');
+    this.element.classList.add('fixed');
+
+    this.element.classList.remove('opacity-25');
+    this.element.classList.add('opacity-100');
+
+    this.element.classList.remove('bg-gray-800');
+    this.element.classList.add('bg-white');
+  }
+
+  topOfWindowAdjustments = () => {
+    this.element.classList.remove('top-0');
+    this.element.classList.add('bottom-0');
+
+    this.element.classList.remove('fixed');
+    this.element.classList.add('absolute');
+
+    this.element.classList.remove('opacity-100');
+    this.element.classList.add('opacity-25');
+
+    this.element.classList.remove('bg-white');
+    this.element.classList.add('bg-gray-800');
   }
 
 }

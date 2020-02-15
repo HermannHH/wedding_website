@@ -1,43 +1,58 @@
 -# Navbar
-%nav.w-full.p-4.bg-white.bottom-0.z-50.absolute{ data: { controller: "navbar"}}
+%nav.w-full.p-4.bg-gray-800.bottom-0.z-50.absolute.opacity-25.shadow#navbar{ data: { controller: "navbar"}}
+  .hidden{ data: { "target": "navbar.initialOffset"}}
+  .mb-px.flex.justify-center
+    %a.no-underline.text-teal-dark.border-b-2.border-teal-dark.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
+      Home
+    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
+      Products
+    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
+      Discounts
+    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3{:href => "#"}
+      Customers
 
 -# Cover
-.flex.w-full.h-screen
-  .flex.z-50.absolute.w-full.h-screen.justify-center.items-center
-    .flex
-      %h1.text-6xl.font-bold.text-white="Hermann & Samantha"
-  .glide
-    .glide__track{"data-glide-el" => "track"}
-      %ul.glide__slides
-        %li.glide__slide.w-full.h-screen
-          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
-        %li.glide__slide.w-full.h-screen
-          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
-        %li.glide__slide.w-full.h-screen
-          = image_tag 'https://placekitten.com/1200/800', class: "w-full h-screen"
-    .glide__arrows{"data-glide-el" => "controls"}
-      %button.glide__arrow.glide__arrow--left{"data-glide-dir" => "<"} prev
-      %button.glide__arrow.glide__arrow--right{"data-glide-dir" => ">"} next
+.flex.justify-center.items-center.w-full.h-screen.bg-no-repeat.bg-cover{ style: "background-image: url('https://placekitten.com/1200/800')"}
+  %h1.text-6xl.font-bold.text-white="Hermann & Samantha"
 
 -# Blocks
-.p-40.flex.flex-wrap
-  %div{ class: "w-1/2 flex-shrink-0 "}
-    = image_tag 'https://placekitten.com/400/400', class: "w-full"
-  %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-200 flex flex-col justify-center"}
-    %h1.text-xl="The Groom"
-    %p
-      Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
-  %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-200 flex flex-col justify-center"}
-    %h1.text-xl="The Groom"
-    %p
-      Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
-  %div{ class: "w-1/2 flex-shrink-0 "}
-    = image_tag 'https://placekitten.com/400/400', class: "w-full"
+.p-40.flex.justify-center.bg-pink-100
+  %div{ class: "w-2/3 flex rounded-md overflow-hidden flex-wrap "}
+    %div{ class: "w-1/2 flex-shrink-0 "}
+      = image_tag 'https://placekitten.com/400/400', class: "w-full"
+    %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-100 flex flex-col justify-center"}
+      %h1.text-xl="The Groom"
+      %p
+        Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
+    %div{ class: "w-1/2 flex-shrink-0 p-4 bg-gray-100 flex flex-col justify-center"}
+      %h1.text-xl="The Groom"
+      %p
+        Brian Ketelsen was born in Iowa, but spent most of his childhood in Wyoming. He served in the US Army as a M2 Bradley gunner, then attended college in Wyoming, later attending Harvard. He currently works at Microsoft.
+    %div{ class: "w-1/2 flex-shrink-0 "}
+      = image_tag 'https://placekitten.com/400/400', class: "w-full"
 
 -# Timer
-.w-full.flex
-  = image_tag 'https://placekitten.com/400/100', class: "w-full"
+.w-full.flex.relative#timer-section.py-40.justify-center
+  = react_component('confetti', props: {}, html_class: '')
+  #clockdiv{ data: { controller: "countdown" }}
+    %div
+      %span.days{ data: { target: "countdown.days" }}
+      .smalltext Days
+    %div
+      %span.hours{ data: { target: "countdown.hours" }}
+      .smalltext Hours
+    %div
+      %span.minutes{ data: { target: "countdown.minutes" }}
+      .smalltext Minutes
+    %div
+      %span.seconds{ data: { target: "countdown.seconds" }}
+      .smalltext Seconds
 
 -# Video
-.border.border-blue-500.w-full.p-4.flex.justify-center
+.w-full.p-4.flex.justify-center.py-40
   = get_video_iframe("https://www.youtube.com/watch?v=vDiFSzQEMOs")
+
+
+-# -# Tests
+-# .w-full.flex.justify-center
+-#   = react_component('carousel', props: {}, html_class: 'flex flex-col self-center max-h-screen w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4')
