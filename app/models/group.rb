@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 
+#TODO: Add Token
 class Group < ApplicationRecord
 
   has_many :members, class_name: "Group::Member", foreign_key: "group_id"

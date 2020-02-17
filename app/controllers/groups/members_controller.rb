@@ -62,9 +62,7 @@ class Groups::MembersController < ApplicationController
     end
   end
 
-  def rsvp_confirm
-    # TODO: rails g migration AddRsvpConfirmedAtToGroupMembers rsvp_confirmed_at:datetime
-  end
+
 
   private
 

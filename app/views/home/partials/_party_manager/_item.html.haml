@@ -1,3 +1,4 @@
+-# Todo: Perhaps rather card type of vibe?
 %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem", member_id: params[:group_member_id] }}
   .border-l-2.border-transparent
     %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
@@ -10,3 +11,8 @@
       .pl-8.pr-8.pb-5.text-grey-800
         %ul.pl-4
           %li.pb-2="#{member.first_name} #{member.last_name}"
+          %li
+            - if member.rsvp_confirmed?
+              %span="Thank you for RSVP'ing"
+            - else
+              = link_to "RSVP", "", method: :patch

@@ -1,5 +1,7 @@
-class GroupsController < ApplicationController
+class SongRequestsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+
+  # TODO: Setup controller after model
 
   # GET /groups
   # GET /groups.json
@@ -60,17 +62,6 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def bulk_upload
-    #TODO: Add csv upload here
-    # One csv with columns for:
-    # Group Name
-    # First Name
-    # Last Name
-    # Email
-    # Phone Number
-  end
-
   def download_as_xlsx
     #TODO: Download following columns
     # One csv with columns for:

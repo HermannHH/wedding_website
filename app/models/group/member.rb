@@ -11,6 +11,12 @@
 #  updated_at :datetime         not null
 #
 
+# TODO: Add phone number
+# TODO: Add Token
+# TODO: Add Language
+# TODO: Add language locale & configure based on views
+# TODO: Convert views to use locales
+
 class Group::Member < ApplicationRecord
 
   belongs_to :group
