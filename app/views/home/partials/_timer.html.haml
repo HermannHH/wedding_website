@@ -1,0 +1,16 @@
+-# Timer
+.w-full.flex.relative#timer-section.py-40.justify-center
+  = react_component('confetti', props: {}, html_class: '')
+  #clockdiv{ data: { controller: "countdown" }}
+    %div
+      %span.days{ data: { target: "countdown.days" }}
+      .smalltext Days
+    %div
+      %span.hours{ data: { target: "countdown.hours" }}
+      .smalltext Hours
+    %div
+      %span.minutes{ data: { target: "countdown.minutes" }}
+      .smalltext Minutes
+    %div
+      %span.seconds{ data: { target: "countdown.seconds" }}
+      .smalltext Seconds

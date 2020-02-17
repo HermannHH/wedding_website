@@ -1,0 +1,8 @@
+-# Party Manager
+.w-full.flex.py-20.bg-gray-100.justify-center
+  %div{ class: "flex flex-col w-2/3"}
+    .flex.w-full.pt-2.pb-12.justify-center
+      %h2.text-4xl.font-bold="Your party"
+    %section{ class: "w-2/3 shadow bg-white w-full", data: { controller: "accordion" }}
+      - @group.members.each do |member|
+        = render partial: "home/partials/_party_manager/item", locals: { member: member }

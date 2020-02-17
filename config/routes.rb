@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     root to: 'groups#index', as: :authenticated_root
   end
   root to: "home#index"
+  namespace :home do
+    patch :rsvp_confirm
+  end
 end

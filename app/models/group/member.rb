@@ -19,4 +19,14 @@ class Group::Member < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true, email: true, uniqueness: { scope: :group_id }
 
+  def confirm_rsvp!
+    self.update!(
+      rsvp_confirmed_at: Time.now.utc
+    )
+  end
+
+  def rsvp_confirmed?
+    !self.rsvp_confirmed_at.blank?
+  end
+
 end
