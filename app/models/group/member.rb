@@ -16,6 +16,7 @@
 # TODO: Add Language
 # TODO: Add language locale & configure based on views
 # TODO: Convert views to use locales
+# TODO: Add Dietary preference free text
 
 class Group::Member < ApplicationRecord
 
