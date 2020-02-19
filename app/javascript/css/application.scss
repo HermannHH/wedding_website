@@ -59,6 +59,11 @@ $content-background-color: #2f2f2f;
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
 .#{$root-element} {
   --organic-arrow-thickness: #{$organic-arrow-thickness};
   --organic-arrow-height: #{$organic-arrow-height};
@@ -555,12 +560,6 @@ $content-background-color: #2f2f2f;
   font-size: 16px;
 }
 
-
-#navbar {
-  transition: background-color 350ms ease-in-out;
-  transition: opacity 350ms ease-in-out;
-}
-
 .accordion-panel {
   transition: height 350ms ease-in-out;
   overflow: hidden;
@@ -633,3 +632,25 @@ $content-background-color: #2f2f2f;
 //   -moz-box-shadow: 0 10px 20px rgba(0,0,0,.7);
 //       box-shadow: 0 10px 20px rgba(0,0,0,.7);
 // }
+
+#cover-layer{
+  background-color: rgba(45, 55, 72, 0.75);
+}
+
+
+.navbar {
+  @apply w-full p-4 bg-transparent bottom-0 z-50 absolute z-50;
+  transition: background-color 350ms ease-in-out;
+  transition: position 350ms ease-in-out;
+
+  .link {
+    @apply uppercase tracking-wide font-bold text-xs py-3 mr-8 text-white;
+  }
+
+  &.white-navbar {
+    @apply bg-white top-0 z-50 fixed opacity-100 shadow bottom-auto;
+    .link {
+      @apply text-gray-800;
+    }
+  }
+}

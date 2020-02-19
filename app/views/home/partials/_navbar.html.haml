@@ -1,14 +1,12 @@
 -# Navbar
 -# TODO: Add Scroll to
 -# TODO: Make mobile friendly. Use Stimulus as have to close nav on click/before scroll
-%nav.w-full.p-4.bg-gray-800.bottom-0.z-50.absolute.opacity-25.shadow#navbar{ data: { controller: "navbar"}}
+%nav.navbar{ data: { controller: "navbar"}}
   .hidden{ data: { "target": "navbar.initialOffset"}}
   .mb-px.flex.justify-center
-    %a.no-underline.text-teal-dark.border-b-2.border-teal-dark.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
-      Home
-    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
-      Products
-    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3.mr-8{:href => "#"}
-      Discounts
-    %a.no-underline.text-grey-dark.border-b-2.border-transparent.uppercase.tracking-wide.font-bold.text-xs.py-3{:href => "#"}
-      Customers
+    = link_to "About Us", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#about-us"}
+    = link_to "Our Memories", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#memories"}
+    = link_to "Countdown", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#timer-section"}
+    = link_to "Our Engagement", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#engagement"}
+    = link_to "Questions", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#questions"}
+    = link_to "RSVP", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#rsvp"}

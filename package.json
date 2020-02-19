@@ -21,6 +21,7 @@
     "react-image-carousel": "^2.0.18",
     "react-responsive-carousel": "^3.1.51",
     "react-transition-group": "^4.3.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "stimulus": "^1.1.1",
     "swiper": "^5.3.1",
     "tailwindcss": "^1.2.0",

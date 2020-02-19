@@ -7,12 +7,15 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
+import smoothscroll from 'smoothscroll-polyfill';
+
 
 export default class extends Controller {
   static targets = [ "initialOffset" ]
 
   connect() {
+    smoothscroll.polyfill();
     this.initialOffsetTarget.innerHTML = this.element.offsetTop;
     window.addEventListener('scroll', this.stickyNavigation);
   }
@@ -20,10 +23,10 @@ export default class extends Controller {
   stickyNavigation = () => {
     // Bottom
     if (scrollY >= this.initialOffsetTarget.innerHTML) {
-      this.bottomOfWindowAdjustments();
+      this.element.classList.add('white-navbar');
     // Top
     } else {
-      this.topOfWindowAdjustments();
+      this.element.classList.remove('white-navbar');
     }
   }
 
@@ -53,6 +56,17 @@ export default class extends Controller {
 
     this.element.classList.remove('bg-white');
     this.element.classList.add('bg-gray-800');
+  }
+
+  scrollToSection = (event) => {
+    event.preventDefault();
+    // console.log('document.querySelector(event.srcElement.dataset.targetHash)', event.srcElement.dataset.targetHash, )
+    // document.querySelector(event.srcElement.dataset.targetHash).scrollIntoView({
+    //   top: -220,
+    //   behavior: 'smooth'
+    // });
+    var fromTop = document.querySelector(event.srcElement.dataset.targetHash).offsetTop;
+    window.scroll({ top: fromTop - 85, left: 0, behavior: 'smooth' });
   }
 
 }
