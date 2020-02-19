@@ -17,20 +17,15 @@
 -#             - else
 -#               = link_to "RSVP", "", method: :patch
 
-.max-w-sm.w-full.lg:max-w-full.lg:flex.my-8
-  .h-48.lg:h-auto.lg:w-48.flex-none.bg-cover.rounded-t.lg:rounded-t-none.lg:rounded-l.text-center.overflow-hidden{:style => "background-image: url('https://placekitten.com/400/400')", :title => "Woman holding a mug"}
-  .border-r.border-b.border-l.border-gray-400.lg:border-l-0.lg:border-t.lg:border-gray-400.bg-white.rounded-b.lg:rounded-b-none.lg:rounded-r.p-4.flex.flex-col.justify-between.leading-normal
+.w-full.my-8
+  .border.border-gray-400.bg-white.rounded.p-4.flex.flex-col.justify-between.leading-normal
     .mb-8
-      %p.text-sm.text-gray-600.flex.items-center
-        %svg.fill-current.text-gray-500.w-3.h-3.mr-2{:viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
-          %path{:d => "M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"}
-        Members only
-      .text-gray-900.font-bold.text-xl.mb-2 Can coffee make you a better developer?
-      %p.text-gray-700.text-base Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-    .flex.items-center
-      %img.w-10.h-10.rounded-full.mr-4{:alt => "Avatar of Jonathan Reinink", :src => "/img/jonathan.jpg"}/
-      .text-sm
-        %p.text-gray-900.leading-none Jonathan Reinink
-        %p.text-gray-600 Aug 18
+      .text-gray-900.font-bold.text-xl.mb-2="Hermann Harris"
+      - if member.rsvp_confirmed?
+        %span="Thank you for RSVP'ing"
+      - else
+        = link_to "RSVP", "", method: :patch
+      -#  %p.text-gray-700.text-base Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+
 
 -# TODO: Add dietary preference form/textbox with toggle?
