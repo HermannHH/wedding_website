@@ -1,6 +1,30 @@
 -# Questions and answers
 -# TODO: Like is there a bar?
 -# Is there uber
-.p-40.flex.justify-center.bg-pink-100
-  %div{ class: "w-2/3 flex rounded-md overflow-hidden flex-wrap "}
-    %h1="Questions and answers"
+.w-full.flex.py-20.bg-gray-100.justify-center
+  %div{ class: "flex flex-col w-2/3"}
+    .flex.w-full.pt-2.pb-12.justify-center
+      %h2.text-4xl.font-bold="Questions & Answers"
+    %section{ class: "w-2/3 shadow bg-white w-full", data: { controller: "accordion" }}
+      %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem", member_id: params[:group_member_id] }}
+        .border-l-2.border-transparent
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-grey-800.font-thin.text-xl="Will you serve Brandy?"
+            .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "6 9 12 15 18 9"}
+          %div.h-0.accordion-panel
+            .pl-8.pr-8.pb-5.text-grey-800
+              %p="Yes. Any kind of Brandy"
+      %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem", member_id: params[:group_member_id] }}
+        .border-l-2.border-transparent
+          %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+            %span.text-grey-800.font-thin.text-xl="Will you serve Brandy?"
+            .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+              / icon by feathericons.com
+              %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %polyline{:points => "6 9 12 15 18 9"}
+          %div.h-0.accordion-panel
+            .pl-8.pr-8.pb-5.text-grey-800
+              %p="Yes. Any kind of Brandy"

@@ -1,5 +1,7 @@
 -# Gallery
 -# TODO: Perhaps autoscroll horisontal gallery of pics
-.p-40.flex.justify-center.bg-pink-100
-  %div{ class: "w-2/3 flex rounded-md overflow-hidden flex-wrap "}
-    %h1="Hello Gallery"
+.bg-blue-100
+  .flex.w-full.pt-16.pb-12.justify-center
+    %h2.text-4xl.font-bold="Our memories"
+  .pt-20.pb-32
+    = react_component('gallery', props: {}, html_class: nil)

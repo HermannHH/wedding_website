@@ -34,7 +34,7 @@ module VideosHelper
 
     result = %(<iframe title="YouTube video player" width="#{width}"
                 height="#{height}" src="//www.youtube.com/embed/#{ youtube_id }"
-                frameborder="0" allowfullscreen></iframe>)
+                frameborder="0" allowfullscreen class="w-full"></iframe>)
     result.html_safe
   end
 

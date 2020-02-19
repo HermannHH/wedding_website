@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @group = Group.find_by!(token: url_params[:gt]).eager_load(:members)
+    @group = Group.find_by!(token: url_params[:gt])
     @current_member = Group::Member.find_by!(token: url_params[:token])
 
     # TODO: Set locale by current_member
@@ -8,8 +8,6 @@ class HomeController < ApplicationController
   end
 
   def rsvp_confirm
-    # TODO: rails g migration AddRsvpConfirmedAtToGroupMembers rsvp_confirmed_at:datetime
-
     @group_member = Group::Member.find_by!(token: url_params[:token])
     @group_member.confirm_rsvp!
     respond_to do |format|
@@ -19,7 +17,11 @@ class HomeController < ApplicationController
   end
 
   def song_request
-    #TODO: Setup song request
+    @sing_request = Group::Member::SongRequest.create!(song_request_params)
+    respond_to do |format|
+      # format.html { redirect_to group_members_url, notice: 'Member was successfully destroyed.' }
+      format.js
+    end
   end
 
   private
@@ -30,6 +32,13 @@ class HomeController < ApplicationController
     params.permit(
       :gt, # Group Token
       :token # Group Member Token
+    )
+  end
+
+  def song_request_params
+    params.require(:song_request).permit(
+      :name,
+      :artist
     )
   end
 end
