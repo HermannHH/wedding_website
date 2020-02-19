@@ -32,9 +32,9 @@ module VideosHelper
   def get_youtube_iframe url, width, height
     youtube_id = find_youtube_id url
 
-    result = %(<iframe title="YouTube video player" width="#{width}"
-                height="#{height}" src="//www.youtube.com/embed/#{ youtube_id }"
-                frameborder="0" allowfullscreen class="w-full"></iframe>)
+    result = %(<iframe title="Engagement Video"
+                src="//www.youtube.com/embed/#{ youtube_id }"
+                frameborder="0" allowfullscreen data-controller="video"></iframe>)
     result.html_safe
   end
 

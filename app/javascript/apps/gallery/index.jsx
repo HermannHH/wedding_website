@@ -4,25 +4,16 @@ import Swiper from 'react-id-swiper';
 function Gallery() {
 
   const params = {
-    // pagination: {
-    //   el: '.swiper-pagination.customized-swiper-pagination',
-    // }, // Add your class name for pagination container
-    // navigation: {
-    //   nextEl: '.swiper-button-next.customized-swiper-button-next', // Add your class name for next button
-    //   prevEl: '.swiper-button-prev.customized-swiper-button-prev' // Add your class name for prev button
-    // },
+
     containerClass: 'polaroid-images', // Replace swiper-container with customized-swiper-container
     slidesPerView: 5,
     loop: true,
+    fadeEffect: {
+      crossFade: true
+    },
     autoplay: {
       delay: 3000
     }
-      // loop
-      // autoplay={{
-      //   delay: 5000
-      // }}
-      // loopAdditionalSlides={5}
-      // className="polaroid-images"
   }
 
   return (
