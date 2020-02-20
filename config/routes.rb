@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :groups do
+    collection do
+      post :import
+    end
     resources :members, module: :groups
   end
   devise_for :users

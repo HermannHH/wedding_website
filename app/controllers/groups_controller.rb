@@ -61,14 +61,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def bulk_upload
-    #TODO: Add csv upload here
-    # One csv with columns for:
-    # Group Name
-    # First Name
-    # Last Name
-    # Email
-    # Phone Number
+  def import
+    count = Group.import params[:file]
+    redirect_to groups_path, notice: "Imported #{count} users"
   end
 
   def download_as_xlsx
