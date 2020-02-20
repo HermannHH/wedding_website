@@ -70,23 +70,6 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: "Imported #{count} users"
   end
 
-  def export
-    #TODO: Download following columns
-    # One csv with columns for:
-    # Group Name
-    # First Name
-    # Last Name
-    # Email
-    # Phone Number
-    # Token
-    # Personal Link
-    # Language
-    @groups = Group.eager_load(:members)
-    respond_to do |format|
-      format.xlsx
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group

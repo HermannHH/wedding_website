@@ -1,6 +1,6 @@
 %h1 Listing groups
 
-= link_to "Export", export_groups_path, method: :post
+= link_to "Export", groups_path(format: :csv)
 
 = form_tag import_groups_path, multipart: true  do
   = file_field_tag :file
