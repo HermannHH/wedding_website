@@ -38,3 +38,11 @@ import Glide, { Controls, Breakpoints, Swipe } from '@glidejs/glide/dist/glide.m
 //     )
 //   }
 // });
+
+import axios from 'axios';
+
+
+document.addEventListener("turbolinks:load", function() {
+  const csrfToken = document.querySelector('[name=csrf-token]').content;
+  axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+});

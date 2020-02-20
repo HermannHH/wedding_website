@@ -4,4 +4,5 @@
     .flex.w-full.pt-2.pb-12.justify-center.flex-col.items-center
       %h2.text-4xl.font-bold="Your party"
       - @group.members.each do |member|
-        = render partial: "home/partials/_party_manager/item", locals: { member: member }
+        .w-full.my-8{ id: "party-member-#{member.token}" }
+          = render partial: "home/partials/_party_manager/item", locals: { member: member }

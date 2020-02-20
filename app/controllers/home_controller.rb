@@ -4,16 +4,6 @@ class HomeController < ApplicationController
     @current_member = Group::Member.find_by!(token: url_params[:token])
 
     # TODO: Set locale by current_member
-    # TODO: Setup custom 404
-  end
-
-  def rsvp_confirm
-    @group_member = Group::Member.find_by!(token: url_params[:token])
-    @group_member.confirm_rsvp!
-    respond_to do |format|
-      # format.html { redirect_to group_members_url, notice: 'Member was successfully destroyed.' }
-      format.js
-    end
   end
 
   def song_request

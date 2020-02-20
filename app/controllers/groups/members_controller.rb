@@ -62,21 +62,23 @@ class Groups::MembersController < ApplicationController
     end
   end
 
-
-
   private
 
-  skip_before_action :authenticate_user!, only: [:rsvp_confirm]
+  skip_before_action :authenticate_user!, only: [:rsvp]
 
   before_action :set_group
 
   def set_group
-    @group = Group.find_by!(id: params[:group_id])
+    @group = Group.find_by!(token: url_params[:group_token] || url_params[:token])
   end
     # Use callbacks to share common setup or constraints between actions.
     def set_group_member
       @group_member = Group::Member.find(params[:id])
     end
+
+  def url_params
+    params.permit(:group_token, :token)
+  end
 
     # Only allow a list of trusted parameters through.
     def group_member_params

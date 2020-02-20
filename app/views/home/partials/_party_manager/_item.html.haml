@@ -1,31 +1,6 @@
--# Todo: Perhaps rather card type of vibe?
--# %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem", member_id: params[:group_member_id] }}
--#   .border-l-2.border-transparent
--#     %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
--#       %span.text-grey-800.font-thin.text-xl="#{member.first_name} #{member.last_name}"
--#       .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
--#         / icon by feathericons.com
--#         %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
--#           %polyline{:points => "6 9 12 15 18 9"}
--#     %div.h-0.accordion-panel
--#       .pl-8.pr-8.pb-5.text-grey-800
--#         %ul.pl-4
--#           %li.pb-2="#{member.first_name} #{member.last_name}"
--#           %li
--#             - if member.rsvp_confirmed?
--#               %span="Thank you for RSVP'ing"
--#             - else
--#               = link_to "RSVP", "", method: :patch
-
-.w-full.my-8
-  .border.border-gray-400.bg-white.rounded.p-4.flex.flex-col.justify-between.leading-normal
-    .mb-8
-      .text-gray-900.font-bold.text-xl.mb-2="#{member.first_name} #{member.last_name}"
-      - if member.rsvp_confirmed?
-        %span="Thank you for RSVP'ing"
-      - else
-        = link_to "RSVP", "", method: :patch
-      -#  %p.text-gray-700.text-base Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-
-
--# TODO: Add dietary preference form/textbox with toggle?
+= react_component('rsvp_block', props: { |
+  update_path: api_v1_groups_member_path(token: member.token), |
+  rsvp_path: rsvp_api_v1_groups_member_path(token: member.token ), |
+  name: "#{member.first_name} #{member.last_name}", |
+  hasConfirmed: member.has_confirmed |
+  }, html_class: nil) |

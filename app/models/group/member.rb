@@ -37,8 +37,8 @@ class Group::Member < ApplicationRecord
     )
   end
 
-  def rsvp_confirmed?
-    !self.rsvp_confirmed_at.blank?
+  def has_confirmed
+    !self.rsvp_confirmed_at.nil?
   end
 
   def personal_link
