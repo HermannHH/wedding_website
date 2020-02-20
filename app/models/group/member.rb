@@ -43,7 +43,7 @@ class Group::Member < ApplicationRecord
 
   def personal_link
     # https://stackoverflow.com/questions/341143/can-rails-routing-helpers-i-e-mymodel-pathmodel-be-used-in-models
-    self.token
+    Rails.application.routes.url_helpers.root_url(gt: self.group.token , token: self.token)
   end
 
 end
