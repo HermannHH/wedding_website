@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       post :import
+      post :export
     end
     resources :members, module: :groups
   end

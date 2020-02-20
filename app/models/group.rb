@@ -12,7 +12,7 @@ require 'csv'
 
 class Group < ApplicationRecord
 
-  has_many :members, class_name: "Group::Member", foreign_key: "group_id"
+  has_many :members, class_name: "Group::Member", foreign_key: "group_id", dependent: :destroy
 
   accepts_nested_attributes_for :members, allow_destroy: true
 
@@ -43,6 +43,25 @@ class Group < ApplicationRecord
       end
     end
     counter
+  end
+
+  def self.to_csv
+    CSV.generate(headers: true) do |csv|
+      csv << ['group_name', 'first_name', 'last_name', 'email', 'phone_number', 'personal_link', 'language']
+      all.each do |group|
+        group.members.each do |member|
+          csv << [
+            group.name,
+            member.first_name,
+            member.last_name,
+            member.email,
+            member.phone_number,
+            member.personal_link,
+            member.language
+          ]
+        end
+      end
+    end
   end
 
 end

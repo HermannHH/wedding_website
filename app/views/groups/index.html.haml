@@ -1,5 +1,7 @@
 %h1 Listing groups
 
+= link_to "Export", export_groups_path, method: :post
+
 = form_tag import_groups_path, multipart: true  do
   = file_field_tag :file
   = submit_tag "Import"

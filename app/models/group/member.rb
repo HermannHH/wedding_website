@@ -41,4 +41,9 @@ class Group::Member < ApplicationRecord
     !self.rsvp_confirmed_at.blank?
   end
 
+  def personal_link
+    # https://stackoverflow.com/questions/341143/can-rails-routing-helpers-i-e-mymodel-pathmodel-be-used-in-models
+    self.token
+  end
+
 end

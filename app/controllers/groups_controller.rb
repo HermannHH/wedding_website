@@ -5,6 +5,10 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.eager_load(:members).all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @groups.to_csv }
+    end
   end
 
   # GET /groups/1
@@ -66,7 +70,7 @@ class GroupsController < ApplicationController
     redirect_to groups_path, notice: "Imported #{count} users"
   end
 
-  def download_as_xlsx
+  def export
     #TODO: Download following columns
     # One csv with columns for:
     # Group Name
@@ -77,6 +81,10 @@ class GroupsController < ApplicationController
     # Token
     # Personal Link
     # Language
+    @groups = Group.eager_load(:members)
+    respond_to do |format|
+      format.xlsx
+    end
   end
 
   private
