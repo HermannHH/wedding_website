@@ -14,11 +14,31 @@ class Group < ApplicationRecord
 
   has_many :members, class_name: "Group::Member", foreign_key: "group_id", dependent: :destroy
 
+  has_many :song_requests, through: :members
+
   accepts_nested_attributes_for :members, allow_destroy: true
 
   validates     :name, presence: true, uniqueness: true
 
   has_secure_token
+
+
+  def self.member_count
+    total = 0
+    Group.all.each do |group|
+      total += group.members.size
+    end
+    total
+  end
+
+
+  def self.confirmed_member_count
+    total = 0
+    Group.all.each do |group|
+      total += group.members.where.not(rsvp_confirmed_at: nil).size
+    end
+    total
+  end
 
 
   def self.import(file)
@@ -56,7 +76,7 @@ class Group < ApplicationRecord
             member.last_name,
             member.email,
             member.phone_number,
-            member.personal_link,
+            member.personal_url,
             member.language
           ]
         end

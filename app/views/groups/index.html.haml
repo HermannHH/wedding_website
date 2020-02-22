@@ -1,83 +1,103 @@
-%h1 Listing groups
+-# %h1 Listing groups
 
-= link_to "Log Out", destroy_user_session_path, method: :delete
+-# = link_to "Log Out", destroy_user_session_path, method: :delete
 
-= link_to "Export", groups_path(format: :csv)
+-# = link_to "Export", groups_path(format: :csv)
 
-= form_tag import_groups_path, multipart: true  do
-  = file_field_tag :file
-  = submit_tag "Import"
-
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Members
-      %th
-      %th
-      %th
-
-  %tbody
-    - @groups.each do |group|
-      %tr
-        %td= group.name
-        %td= group.members.size
-        %td= link_to 'Show', group
-        %td= link_to 'Edit', edit_group_path(group)
-        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        %td= link_to 'New member', new_group_member_path(group.id)
+-# = form_tag import_groups_path, multipart: true  do
+-#   = file_field_tag :file
+-#   = submit_tag "Import"
 
 
-%br
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Name
+-#       %th Members
+-#       %th
+-#       %th
+-#       %th
 
-= link_to 'New Group', new_group_path
+-#   %tbody
+-#     - @groups.each do |group|
+-#       %tr
+-#         %td= group.name
+-#         %td= group.members.size
+-#         %td= link_to 'Show', group
+-#         %td= link_to 'Edit', edit_group_path(group)
+-#         %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+-#         %td= link_to 'New member', new_group_member_path(group.id)
 
--# -# TODO: Show table in panel dropdown
--# -# https://tailwindcomponents.com/component/collapsible-accordion
--# %section.shadow
--#   %article.border-b
--#     .border-l-2.border-transparent
--#       %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
--#         %span.text-grey-darkest.font-thin.text-xl
--#           Massa vitae tortor condimentum lacinia quis vel eros donec
--#         .rounded-full.border.border-grey.w-7.h-7.flex.items-center.justify-center
--#           / icon by feathericons.com
--#           %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
--#             %polyline{:points => "6 9 12 15 18 9"}
--#   %article.border-b
--#     .border-l-2.bg-grey-lightest.border-indigo
--#       %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
--#         %span.text-indigo.font-thin.text-xl
--#           Lorem ipsum dolor sit amet
--#         .rounded-full.border.border.border-indigo.w-7.h-7.flex.items-center.justify-center.bg-indigo
--#           / icon by feathericons.com
--#           %svg{"aria-hidden" => "true", "data-reactid" => "281", :fill => "none", :height => "24", :stroke => "white", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
--#             %polyline{:points => "18 15 12 9 6 15"}
--#       %div
--#         .pl-8.pr-8.pb-5.text-grey-darkest
--#           %ul.pl-4
--#             %li.pb-2
--#               consectetur adipiscing elit
--#             %li.pb-2
--#               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
--#             %li.pb-2
--#               Viverra orci sagittis eu volutpat odio facilisis mauris
--#   %article.border-b
--#     .border-l-2.border-transparent
--#       %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
--#         %span.text-grey-darkest.font-thin.text-xl
--#           Lorem dolor sed viverra ipsum
--#         .rounded-full.border.border-grey.w-7.h-7.flex.items-center.justify-center
--#           / icon by feathericons.com
--#           %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
--#             %polyline{:points => "6 9 12 15 18 9"}
--#   %article.border-b
--#     .border-l-2.border-transparent
--#       %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
--#         %span.text-grey-darkest.font-thin.text-xl
--#           Egestas sed tempus urna
--#         .rounded-full.border.border-grey.w-7.h-7.flex.items-center.justify-center
--#           / icon by feathericons.com
--#           %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
--#             %polyline{:points => "6 9 12 15 18 9"}
+
+-# %br
+
+-# = link_to 'New Group', new_group_path
+
+.w-full
+  .py-8.px-4.flex.justify-between
+    = link_to "Export", groups_path(format: :csv), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    = link_to "Export", "", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  .py-8.px-4.flex.justify-between
+    %table.text-left.w-full.border-collapse
+      %thead
+        %tr
+          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light # Guests Invited
+          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light # Guests Confirmed
+      %tbody
+        %tr.hover:bg-grey-lighter
+          %td.py-4.px-6.border-b.border-grey-light
+            %span.text-sm.font-medium.bg-blue-100.py-1.px-2.rounded.text-blue-500.align-middle= Group.member_count
+          %td.py-4.px-6.border-b.border-grey-light
+            %span.text-sm.font-medium.bg-blue-100.py-1.px-2.rounded.text-blue-500.align-middle= Group.confirmed_member_count
+
+  %div{ class: "flex flex-col w-full"}
+    %section{ class: "w-2/3 shadow bg-white w-full", data: { controller: "accordion" }}
+      - @groups.each do |group|
+        %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem" }}
+          .border-l-2.border-transparent
+            %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+              %span.text-grey-800.font-thin.text-xl= group.name
+              .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+                / icon by feathericons.com
+                %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                  %polyline{:points => "6 9 12 15 18 9"}
+            %div.accordion-panel.bg-gray-200
+              .px-8.pb-5.text-grey-800
+                .w-full
+                  .bg-white.shadow-md.rounded.mt-6.mb-3
+                    %table.text-left.w-full.border-collapse
+                      / Border collapse doesn't work on this site yet but it's available in newer tailwind versions
+                      %thead
+                        %tr
+                          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Name
+                          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Attending
+                          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Dietary Requirements
+                          %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Actions
+                      %tbody
+                        - group.members.each do |member|
+                          %tr.hover:bg-grey-lighter
+                            %td.py-4.px-6.border-b.border-grey-light= member.full_name
+                            %td.py-4.px-6.border-b.border-grey-light
+                              - if member.has_confirmed
+                                %span.text-sm.font-medium.bg-green-100.py-1.px-2.rounded.text-green-500.align-middle="YES"
+                              - else
+                                %span.text-sm.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle="NO"
+                            %td.py-4.px-6.border-b.border-grey-light= member.dietary_preference
+                            %td.py-4.px-6.border-b.border-grey-light
+                              %a.text-grey-lighter.font-bold.py-1.px-3.rounded.text-xs.bg-green.hover:bg-green-dark{:href => "#"} Edit
+                              %a.text-grey-lighter.font-bold.py-1.px-3.rounded.text-xs.bg-blue.hover:bg-blue-dark{:href => "#"} View
+                  - if group.song_requests.size > 0
+                    .bg-white.shadow-md.rounded.mb-6.mt-3
+                      %table.text-left.w-full.border-collapse
+                        / Border collapse doesn't work on this site yet but it's available in newer tailwind versions
+                        %thead
+                          %tr
+                            %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Requested by
+                            %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Song Name
+                            %th.py-4.px-6.bg-grey-lightest.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-grey-light Artist Name
+                        %tbody
+                          - group.song_requests.each do |song_request|
+                            %tr.hover:bg-grey-lighter
+                              %td.py-4.px-6.border-b.border-grey-light= song_request.member.full_name
+                              %td.py-4.px-6.border-b.border-grey-light= song_request.name
+                              %td.py-4.px-6.border-b.border-grey-light= song_request.artist
