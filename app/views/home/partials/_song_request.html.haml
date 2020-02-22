@@ -1,8 +1,8 @@
 -# Song Request
 -# TODO: Integrate with Spotify Search api using stimulus/react. Does API have afrikaans music?
-.p-40.flex.justify-center.bg-pink-100
-  %div{ class: "w-2/3 flex rounded-md overflow-hidden flex-wrap "}
-    %h1="Song Request"
+.p-40
+  %h1="Song Request"
+  = react_component('song-library', props: { create_song_request_path: api_v1_groups_member_songs_path(member_token: @current_member.token )}, html_class: nil)
 
 -# TODO: Setup Song request model that maps to %Group::Member
 -# TODO: Setup Song request controller

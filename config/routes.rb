@@ -24,6 +24,7 @@ Rails.application.routes.draw do
           member do
             patch :rsvp
           end
+          resources :songs, only: [ :create ], module: :members
         end
       end
     end

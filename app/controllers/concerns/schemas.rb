@@ -12,7 +12,12 @@ module Schemas
             :personal_url,
             :rsvp_path,
             :update_path
-          ]
+          ],
+          include: {
+            song_requests: {
+              only: [:id, :name, :artist]
+            }
+          }
         }
       }
     )
