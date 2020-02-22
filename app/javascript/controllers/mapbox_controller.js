@@ -11,6 +11,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   // static targets = [ "output" ]
+  // https://docs.mapbox.com/mapbox.js/api/v3.2.1/l-mapbox-map/
 
   connect() {
     window.addEventListener("resize", this.handleVideoDimensionsSet);

@@ -1,12 +1,12 @@
 -# Navbar
--# TODO: Add Scroll to
--# TODO: Make mobile friendly. Use Stimulus as have to close nav on click/before scroll
 %nav.navbar{ data: { controller: "navbar"}}
   .hidden{ data: { "target": "navbar.initialOffset"}}
   .mb-px.flex.justify-center
-    = link_to "About Us", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#about-us"}
+    -# = link_to "About Us", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#about-us"}
     = link_to "Our Memories", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#memories"}
     = link_to "Countdown", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#timer-section"}
     = link_to "Our Engagement", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#engagement"}
     = link_to "Questions", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#questions"}
     = link_to "RSVP", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#rsvp"}
+    = link_to "Request a song", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#song-request"}
+    = link_to "Location", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#location"}
