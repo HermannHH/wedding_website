@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     end
     resources :members, module: :groups, param: :token
   end
-  devise_for :users
+
+  devise_for :users,
+  path_names: {},
+  controllers: {
+    sessions: 'auth/sessions'
+  }
+
   authenticated :user do
     root to: 'groups#index', as: :authenticated_root
   end

@@ -4,19 +4,12 @@ class HomeController < ApplicationController
     @current_member = Group::Member.find_by!(token: url_params[:token])
     @group = group_schema(group)
 
-
     # TODO: Set locale by current_member
   end
 
-  def song_request
-    @sing_request = Group::Member::SongRequest.create!(song_request_params)
-    respond_to do |format|
-      # format.html { redirect_to group_members_url, notice: 'Member was successfully destroyed.' }
-      format.js
-    end
-  end
-
   private
+
+  layout 'public'
 
   skip_before_action :authenticate_user!
 
