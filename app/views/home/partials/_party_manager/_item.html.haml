@@ -1,6 +1,1 @@
-= react_component('rsvp_block', props: { |
-  update_path: api_v1_groups_member_path(token: member.token), |
-  rsvp_path: rsvp_api_v1_groups_member_path(token: member.token ), |
-  name: "#{member.first_name} #{member.last_name}", |
-  hasConfirmed: member.has_confirmed |
-  }, html_class: nil) |
+= react_component('rsvp_block', props: { data: member }, html_class: nil)

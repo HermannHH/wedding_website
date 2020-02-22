@@ -561,8 +561,16 @@ html {
 }
 
 .accordion-panel {
-  transition: height 350ms ease-in-out;
+  // transition: height 350ms ease-in-out;
+  max-height: 0;
   overflow: hidden;
+
+  // &.active {
+  //   max-height: 20px;
+  // }
+
+  // transition: max-height 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .polaroid-images a {

@@ -31,6 +31,10 @@ class Group::Member < ApplicationRecord
 
   has_secure_token
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def confirm_rsvp!
     self.update!(
       rsvp_confirmed_at: Time.now.utc
@@ -41,9 +45,17 @@ class Group::Member < ApplicationRecord
     !self.rsvp_confirmed_at.nil?
   end
 
-  def personal_link
+  def personal_url
     # https://stackoverflow.com/questions/341143/can-rails-routing-helpers-i-e-mymodel-pathmodel-be-used-in-models
     Rails.application.routes.url_helpers.root_url(gt: self.group.token , token: self.token)
+  end
+
+  def rsvp_path
+    Rails.application.routes.url_helpers.rsvp_api_v1_groups_member_path(token: self.token )
+  end
+
+  def update_path
+    Rails.application.routes.url_helpers.api_v1_groups_member_path(token: self.token)
   end
 
 end

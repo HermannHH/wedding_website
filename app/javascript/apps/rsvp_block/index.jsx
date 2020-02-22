@@ -41,14 +41,15 @@ const Form = ({ handleUpdate }) => (
   </div>
 );
 
-function RsvpBlock({ update_path, name, rsvp_path, hasConfirmed }) {
+function RsvpBlock({ data }) {
 
-  const [confirmed, setConfirmed] = useState(hasConfirmed);
+  console.log('data', data)
+  const [confirmed, setConfirmed] = useState(data.has_confirmed);
   const [showDietaryForm, setShowDietaryForm] = useState(false);
 
   async function handleRsvp() {
     try {
-      await axios.patch(rsvp_path);
+      await axios.patch(data.rsvp_path);
       setConfirmed(true);
     } catch (error) {
       console.error('error', error);
@@ -57,7 +58,7 @@ function RsvpBlock({ update_path, name, rsvp_path, hasConfirmed }) {
 
   async function handleUpdate({ dietary_preference }) {
     try {
-      await axios.patch(update_path, {
+      await axios.patch(data.update_path, {
         member: {
           dietary_preference
         }
@@ -71,7 +72,7 @@ function RsvpBlock({ update_path, name, rsvp_path, hasConfirmed }) {
   return(
     <div className=" border border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
       <div className="text-gray-900 font-bold text-xl mb-2">
-        {name}
+        {data.full_name}
       </div>
       <div>
         {confirmed ?
@@ -86,6 +87,7 @@ function RsvpBlock({ update_path, name, rsvp_path, hasConfirmed }) {
         <div>
           {showDietaryForm ?
             <div>
+              <p>Please tell us if you have any food allergies, are vegan or vegetarian</p>
               <a onClick={() => setShowDietaryForm(false)}>Close</a>
               <Form handleUpdate={handleUpdate}/>
             </div>
@@ -101,12 +103,3 @@ function RsvpBlock({ update_path, name, rsvp_path, hasConfirmed }) {
 };
 
 export default RsvpBlock;
-
-
-// -#   .mb-8
-// -#     .text-gray-900.font-bold.text-xl.mb-2="#{member.first_name} #{member.last_name}"
-// -#     - if member.rsvp_confirmed?
-// -#       %span="Thank you for RSVP'ing"
-// -#     - else
-// -#       = link_to "RSVP", rsvp_group_member_path(group_token: member.group.token, token: member.token ), method: :patch, remote: true
-// -#     -#  %p.text-gray-700.text-base Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.

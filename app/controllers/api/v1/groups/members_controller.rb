@@ -3,13 +3,13 @@ class Api::V1::Groups::MembersController < Api::V1::BaseController
   def rsvp
     @group_member = Group::Member.find_by!(token: url_params[:token])
     @group_member.confirm_rsvp!
-    json_response(@group_member, :ok)
+    json_response(group_schema(@group_member.group), :ok)
   end
 
   def update
     @group_member = Group::Member.find_by!(token: url_params[:token])
     @group_member.update!(data_params)
-    json_response(@group_member, :ok)
+    json_response(group_schema(@group_member.group), :ok)
   end
 
 

@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   def index
-    @group = Group.eager_load(:members).find_by!(token: url_params[:gt])
+    group = Group.eager_load(:members).find_by!(token: url_params[:gt])
     @current_member = Group::Member.find_by!(token: url_params[:token])
+    @group = group_schema(group)
+
 
     # TODO: Set locale by current_member
   end
