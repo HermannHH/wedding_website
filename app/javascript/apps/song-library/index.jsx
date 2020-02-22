@@ -18,7 +18,7 @@ function SongLibrary({ create_song_request_path }) {
 
   async function searchAppleMusic() {
     try {
-      const resp = await axios.get(`https://itunes.apple.com/search?term=${val}&country=za&media=music`);
+      const resp = await axios.get(`https://itunes.apple.com/search?term=${val}&country=za&media=music&limit=10`);
       return resp;
     } catch (error) {
       console.error('error', error);
@@ -27,7 +27,6 @@ function SongLibrary({ create_song_request_path }) {
 
   async function saveSelectedSong(opt) {
     try {
-      console.log('opt', opt);
       const data = {
         song: {
           name: opt.trackCensoredName,
@@ -46,7 +45,7 @@ function SongLibrary({ create_song_request_path }) {
     clearTimeout(timeout);
     timeout = setTimeout(async () => {
       var resp = await searchAppleMusic();
-      var mapped = resp.data.results.slice(0, 10).map( record => (
+      var mapped = resp.data.results.map( record => (
         {label: `${record.artistName} - ${record.trackCensoredName}`, value: {...record}}
       ))
       await callback(mapped);
