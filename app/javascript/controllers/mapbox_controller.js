@@ -18,9 +18,9 @@ export default class extends Controller {
     this.handleVideoDimensionsSet();
     L.mapbox.accessToken = 'pk.eyJ1IjoiaGVybWFubmhoIiwiYSI6ImNqdjhjMm1heTBlOXU0NG55c3ZqbmlvaTMifQ.TJXMyMhgTFQ_HIeiyZsIzA';
     var map = L.mapbox.map(this.element)
-    .setView([30.5, 50.5], 9)
+    .setView([-34.036053, 18.801706], 13)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-    L.marker([30.5, 50.5]).addTo(map);
+    L.marker([-34.036053, 18.801706]).addTo(map);
     if (map.scrollWheelZoom) {
       map.scrollWheelZoom.disable();
     }

@@ -3,6 +3,10 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title WeddingWebsite
+    %meta{:content => "European Travel Destinations", :property => "og:title"}/
+    %meta{:content => "Offering tour packages for individuals or groups.", :property => "og:description"}/
+    %meta{:content => "http://euro-travel-example.com/thumbnail.jpg", :property => "og:image"}/
+    %meta{:content => "http://euro-travel-example.com/index.htm", :property => "og:url"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

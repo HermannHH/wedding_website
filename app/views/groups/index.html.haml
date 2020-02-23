@@ -35,8 +35,12 @@
 
 .w-full
   .py-8.px-4.flex.justify-between
+    = form_tag import_groups_path, multipart: true, class: "flex flex-col"  do
+      = file_field_tag :file
+      = submit_tag "Import", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     = link_to "Export", groups_path(format: :csv), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    = link_to "Export", "", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+
+    -# = link_to "Export", "", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   .py-8.px-4.flex.justify-between
     %table.text-left.w-full.border-collapse
       %thead
