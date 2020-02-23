@@ -10,7 +10,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "panel" ]
+  static targets = [ "panel", "openEl", "closeEl" ]
 
   connect() {
   }
@@ -23,5 +23,7 @@ export default class extends Controller {
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
+    this.openElTarget.classList.toggle('hidden');
+    this.closeElTarget.classList.toggle('hidden');
   }
 }

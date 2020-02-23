@@ -1,13 +1,27 @@
 - if member.not_yet_responded?
   .flex.flex-col
-    = link_to "Accept Invitation", invitation_path(member.token, intent: "accept" ), method: :patch, remote: true, class: "bg-green-200 hover:bg-green-300 text-green-500 hover:text-green-600 font-bold my-2 py-2 px-4 rounded w-full text-center"
-    = link_to "Decline Invitation", invitation_path(member.token, intent: "decline" ), method: :patch, remote: true, class: "bg-red-200 hover:bg-red-300 text-red-500 hover:text-red-600 font-bold my-2 py-2 px-4 rounded w-full text-center"
+    = link_to "Accept Invitation", accept_invitation_path(member.token), method: :patch, remote: true, class: "bg-green-200 hover:bg-green-300 text-green-500 hover:text-green-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Accepting..."}
+    = link_to "Decline Invitation", decline_invitation_path(member.token), method: :patch, remote: true, class: "bg-red-200 hover:bg-red-300 text-red-500 hover:text-red-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Declining..."}
 - elsif member.has_declined?
   .w-full.flex
     %span.text-base.w-full.text-center.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle Sorry that you could not join us
 - elsif member.has_confirmed?
   .w-full.flex.flex-col
     %span.text-base.w-full.text-center.font-medium.bg-green-100.py-1.px-2.rounded.text-green-500.align-middle Thank you for accepting your invitation
-    .w-full.text-center.py-2{ data: { controller: 'expanda '}}
-      = link_to "Have any allergies?", "#", data: { action: "click->expanda#toggle" }
-      %div.border{ data: { target: "expanda.panel"}}
+
+    - if member.dietary_preference.blank?
+      .py-2.expanda{ data: { controller: 'expanda '}}
+        .w-full.text-center
+          = link_to "Have any allergies?", "#", data: { target: "expanda.openEl", action: "click->expanda#toggle" }
+        .w-full.text-right
+          = link_to "X", "#", data: { target: "expanda.closeEl", action: "click->expanda#toggle" }, class: "hidden"
+        .expanda--panel{ data: { target: "expanda.panel"}}
+          = form_with model: member, url: invitation_path(member.token), method: :patch, remote: true do |f|
+            .my-2
+              = f.text_area :dietary_preference, class: "w-full bg-gray-100 rounded p-4 resize-none"
+            .my-2.flex.w-full.justify-end
+              = f.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", data: { disable_with: "Saving..."}
+    - else
+      .py-4.w-full
+        %h5.text-sm.font-semibold="Dietary Preferences"
+        %p.text-sm= member.dietary_preference

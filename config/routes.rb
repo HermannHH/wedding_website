@@ -23,7 +23,12 @@ Rails.application.routes.draw do
   end
   root to: "home#index"
 
-  resources :invitations, only: [:update], module: :home, param: :token
+  resources :invitations, only: [:update], module: :home, param: :token do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
 
 
   namespace :api, constraints: { format: 'json' } do

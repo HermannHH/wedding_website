@@ -2,13 +2,30 @@ class Home::InvitationsController < ApplicationController
 
   def update
     @group_member = Group::Member.find_by!(token: url_params[:token])
-    if url_params[:intent] == 'accept'
-      @group_member.confirm_rsvp!
-    else
-      @group_member.decline_invitation!
-    end
     respond_to do |format|
-      if @group_member.persisted?
+      if @group_member.update(data_params)
+        format.js
+      else
+        format.json { render json: @group_member.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def accept
+    @group_member = Group::Member.find_by!(token: url_params[:token])
+    respond_to do |format|
+      if @group_member.confirm_rsvp!
+        format.js
+      else
+        format.json { render json: @group_member.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def decline
+    @group_member = Group::Member.find_by!(token: url_params[:token])
+    respond_to do |format|
+      if @group_member.decline_invitation!
         format.js
       else
         format.json { render json: @group_member.errors, status: :unprocessable_entity }
@@ -23,8 +40,13 @@ class Home::InvitationsController < ApplicationController
 
   def url_params
     params.permit(
-      :token,
-      :intent
+      :token
+    )
+  end
+
+  def data_params
+    params.require(:group_member).permit(
+      :dietary_preference
     )
   end
 end

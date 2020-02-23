@@ -102,6 +102,17 @@ html {
   font-size: 16px;
 }
 
+
+.expanda {
+  &--panel{
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+  }
+}
+
+
 .accordion-panel {
   // transition: height 350ms ease-in-out;
   max-height: 0;
