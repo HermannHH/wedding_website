@@ -41,6 +41,27 @@ const Form = ({ handleUpdate }) => (
   </div>
 );
 
+function ActionsBlock({
+  confirmed
+}) {
+
+{/* <div className="flex w-full flex-grow-0 flex-shrink-0 flex-wrap">
+      <button className="bg-transparent w-1/2 hover:bg-green-200 text-green-300 font-semibold hover:text-green-500 py-2 px-4 hover:border-transparent">
+        Confirm
+      </button>
+      <button className="bg-transparent w-1/2 hover:bg-red-200 text-red-300 font-semibold hover:text-red-500 py-2 px-4 hover:border-transparent">
+        Decline
+      </button>
+    </div> */}
+  return (
+    <div className="pb-3 px-3">
+      <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Button
+      </button>
+    </div>
+  );
+}
+
 function RsvpBlock({ data }) {
 
   console.log('data', data)
@@ -70,18 +91,14 @@ function RsvpBlock({ data }) {
   }
 
   return(
-    <div className=" border border-gray-400 bg-white rounded p-4 flex flex-col justify-between leading-normal">
-      <div className="text-gray-900 font-bold text-xl mb-2">
-        {data.full_name}
+    <div className=" border border-gray-300 bg-white rounded flex flex-col justify-between leading-normal">
+      <div className="p-4">
+        <div className="text-gray-800 font-semibold text-lg p-2 rounded w-full text-center">
+          {data.full_name}
+        </div>
       </div>
       <div>
-        {confirmed ?
-        <h1>Thank you for rsvp'ing</h1>
-        :
-        <button onClick={() => handleRsvp()}>
-          RSVP
-        </button>
-        }
+        <ActionsBlock confirmed={confirmed} />
       </div>
       {confirmed &&
         <div>
