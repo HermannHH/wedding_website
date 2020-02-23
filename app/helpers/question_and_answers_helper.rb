@@ -1,0 +1,2 @@
+module QuestionAndAnswersHelper
+end

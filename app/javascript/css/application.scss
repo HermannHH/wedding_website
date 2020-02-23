@@ -118,7 +118,7 @@ html {
 .polaroid-images {
   .polaroid-image-item {
     background: white;
-    display: inline;
+    // display: inline;
     float: left;
     margin: 0 15px 30px;
     padding: 10px 10px 25px;
@@ -132,6 +132,8 @@ html {
     transition: all .15s linear;
     z-index: 0;
     position: relative;
+    height: 300px;
+    width: 100%;
     > img {
       display: block;
       width: inherit;
@@ -180,19 +182,6 @@ html {
     -moz-transform: rotate(-18deg);
     transform: rotate(-18deg);
 }
-
-// .polaroid-images div:hover{
-//   -webkit-transform: rotate(0deg);
-//   -moz-transform: rotate(0deg);
-//       transform: rotate(0deg);
-//   -webkit-transform: scale(1.2);
-//   -moz-transform: scale(1.2);
-//       transform: scale(1.2);
-//   z-index:10;
-//   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-//   -moz-box-shadow: 0 10px 20px rgba(0,0,0,.7);
-//       box-shadow: 0 10px 20px rgba(0,0,0,.7);
-// }
 
 #cover-layer{
   background-color: rgba(45, 55, 72, 0.75);

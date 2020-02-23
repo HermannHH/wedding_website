@@ -3,8 +3,7 @@ class HomeController < ApplicationController
     group = Group.eager_load(:members).find_by!(token: url_params[:gt])
     @current_member = Group::Member.find_by!(token: url_params[:token])
     @group = group_schema(group)
-
-    # TODO: Set locale by current_member
+    @questions = QuestionAndAnswer.all
   end
 
   private

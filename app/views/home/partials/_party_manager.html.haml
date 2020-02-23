@@ -1,8 +1,8 @@
 -# Party Manager
-.w-full.flex.py-20.bg-gray-100.justify-center#rsvp
+.w-full.flex.py-20.justify-center#rsvp
   %div{ class: "flex flex-col w-2/3"}
     .flex.w-full.pt-2.pb-12.justify-center.flex-col.items-center
-      %h2.text-4xl.font-bold="Your party"
+      %h2.text-4xl.typewriter="Your invitation"
       - @group['members'].each do |member|
         .w-full.my-8
           = render partial: "home/partials/_party_manager/item", locals: { member: member }

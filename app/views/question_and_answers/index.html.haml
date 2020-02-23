@@ -1,0 +1,23 @@
+%h1 Listing question_and_answers
+
+%table
+  %thead
+    %tr
+      %th Question
+      %th Answer
+      %th
+      %th
+      %th
+
+  %tbody
+    - @question_and_answers.each do |question_and_answer|
+      %tr
+        %td= question_and_answer.question
+        %td= question_and_answer.answer
+        %td= link_to 'Show', question_and_answer
+        %td= link_to 'Edit', edit_question_and_answer_path(question_and_answer)
+        %td= link_to 'Destroy', question_and_answer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Question and answer', new_question_and_answer_path

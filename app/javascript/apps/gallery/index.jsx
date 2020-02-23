@@ -20,8 +20,14 @@ function Gallery({ data }) {
     <Swiper {...params}>
       {data.map( (item, index) => (
         <div key={index} className="polaroid-image-item">
-          <div />
-          <img src={item} />
+          <div style={{
+            backgroundImage: `url(${item})`,
+            width: '100%',
+            height: '100%',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }}/>
+          {/* <img src={item} /> */}
         </div>
       ))}
     </Swiper>

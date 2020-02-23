@@ -10,10 +10,11 @@ export default () => {
 
   return (
     <Confetti
-      opacity={0.1}
+      opacity={0.08}
       width={sectionWidth}
       height={sectionHeight}
       gravity={0.01}
+      colors={['#eabeb0', '#68d391', '#b76e79']}
     />
   )
 }
