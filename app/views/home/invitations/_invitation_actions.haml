@@ -18,7 +18,7 @@
         .expanda--panel{ data: { target: "expanda.panel"}}
           = form_with model: member, url: invitation_path(member.token), method: :patch, remote: true do |f|
             .my-2
-              = f.text_area :dietary_preference, class: "w-full bg-gray-100 rounded p-4 resize-none"
+              = f.text_area :dietary_preference, placeholder: "Tell us if you are Vegan, Vegatarian or have any food allergies...",class: "w-full bg-gray-100 rounded p-4 resize-none"
             .my-2.flex.w-full.justify-end
               = f.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", data: { disable_with: "Saving..."}
     - else
