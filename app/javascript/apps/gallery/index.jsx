@@ -1,8 +1,8 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 
-function Gallery() {
-
+function Gallery({ data }) {
+  console.log('data', data)
   const params = {
 
     containerClass: 'polaroid-images', // Replace swiper-container with customized-swiper-container
@@ -18,30 +18,12 @@ function Gallery() {
 
   return (
     <Swiper {...params}>
-      <a href="" title="Cave">
-        <img height="200" src="https://placekitten.com/200/200" alt="Cave" title="Cave" />
-      </a>
-      <a href="" title="Island">
-        <img height="200" src="https://placekitten.com/200/200" alt="Island" title="Island" />
-      </a>
-      <a href="" title="Islands Forest">
-        <img height="200" src="https://placekitten.com/200/200" alt="Islands Forest" title="Islands Forest" />
-      </a>
-      <a href="" title="Decking">
-        <img height="200" src="https://placekitten.com/200/200" alt="Decking" title="Decking" />
-      </a>
-      <a href="" title="Lake">
-        <img height="200" src="https://placekitten.com/200/200" alt="Lake" title="Lake" />
-      </a>
-      <a href="" title="Mountains">
-        <img height="200" src="https://placekitten.com/200/200" alt="Mountains" title="Mountains" />
-      </a>
-      <a href="" title="Forest">
-        <img height="200" src="https://placekitten.com/200/200" alt="Forest" title="Forest" />
-      </a>
-      <a href="" title="Coast Valley">
-        <img height="200" src="https://placekitten.com/200/200" alt="Coast Valley" title="Coast Valley" />
-      </a>
+      {data.map( (item, index) => (
+        <div key={index} className="polaroid-image-item">
+          <div />
+          <img src={item} />
+        </div>
+      ))}
     </Swiper>
   )
 };

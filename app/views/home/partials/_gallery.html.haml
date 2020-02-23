@@ -1,7 +1,20 @@
 -# Gallery
--# TODO: Perhaps autoscroll horisontal gallery of pics
-%section#memories
-  -# .flex.w-full.pt-16.pb-12.justify-center
-  -#   %h2.text-4xl.font-bold="Our memories"
-  .py-64
-    = react_component('gallery', props: {}, html_class: nil)
+
+:ruby
+  data = [
+    image_path("polaroids/1.jpg"),
+    image_path("polaroids/2.jpg"),
+    image_path("polaroids/3.jpg"),
+    image_path("polaroids/4.jpg"),
+    image_path("polaroids/5.jpg"),
+    image_path("polaroids/6.jpg"),
+    image_path("polaroids/7.jpg"),
+    image_path("polaroids/8.jpg"),
+  ]
+%section#memories.pantene-background
+  .pt-20.pb-32
+    .w-full.flex.justify-center#questions
+      %div{ class: "flex flex-col w-2/3"}
+        .flex.w-full.pt-2.pb-32.justify-center
+          %h2.text-4xl.typewriter.text-white="Our Memories"
+    = react_component('gallery', props: { data: data }, html_class: nil)

@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "days", "hours", "minutes", "seconds" ]
 
   connect() {
-    const deadline = new Date("2020-05-02 14:00");
+    const deadline = new Date("2020-05-02 16:00");
     this.initializeClock(deadline);
   }
 
