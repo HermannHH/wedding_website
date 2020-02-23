@@ -1,18 +1,17 @@
--# Questions and answers
-.w-full.flex.py-20.justify-center#questions.bg-gray-100
-  %div{ class: "flex flex-col w-2/3"}
-    .flex.w-full.pt-2.pb-12.justify-center
-      %h2.text-4xl.typewriter="Questions & Answers"
-    %section{ class: "w-2/3 shadow bg-white w-full", data: { controller: "accordion" }}
-      - @questions.each do |question|
-        %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem" }}
-          .border-l-2.border-transparent
-            %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
-              %span.text-gray-600.font-normal.text-xl= question.question
-              .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
-                / icon by feathericons.com
-                %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
-                  %polyline{:points => "6 9 12 15 18 9"}
-            %div.accordion-panel
-              .pl-8.pr-8.pb-5
-                %p.text-gray-800.text-base.leading-7= question.answer
+.section#invitations.bg-gray-100#questions
+  .section--heading="Questions & Answers"
+  .section--content
+    .flex.flex-col{ class: "w-11/12 md:w-2/3 lg:w-2/3"}
+      %section{ class: "shadow bg-white w-full my-4", data: { controller: "accordion" }}
+        - @questions.each do |question|
+          %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem" }}
+            .border-l-2.border-transparent
+              %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+                %span.text-gray-600.font-normal.text-xl= question.question
+                .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+                  / icon by feathericons.com
+                  %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                    %polyline{:points => "6 9 12 15 18 9"}
+              %div.accordion-panel
+                .pl-8.pr-8.pb-5
+                  %p.text-gray-800.text-base.leading-7= question.answer

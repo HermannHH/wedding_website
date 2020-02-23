@@ -227,3 +227,15 @@ html {
     }
   }
 }
+
+
+.section {
+  @apply w-full flex flex-col pb-16;
+  &--heading {
+    @apply w-full pt-16 pb-8 text-4xl text-center px-8;
+    @extend .typewriter;
+  };
+  &--content {
+    @apply w-full flex flex-col justify-center items-center;
+  }
+}
