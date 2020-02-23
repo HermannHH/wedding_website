@@ -1,9 +1,0 @@
--# Party Manager
-.w-full.flex.py-20.justify-center#rsvp
-  %div{ class: "flex flex-col w-2/3"}
-    .flex.w-full.pt-2.pb-12.justify-center.flex-col.items-center
-      %h2.text-4xl.typewriter="Your invitation"
-      .flex.w-full.flex-col
-        - @group['members'].each do |member|
-          %div{ class: "w-full"}
-            = react_component('rsvp_block', props: { data: member }, html_class: "my-4")

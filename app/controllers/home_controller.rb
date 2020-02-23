@@ -1,9 +1,18 @@
 class HomeController < ApplicationController
   def index
-    group = Group.eager_load(:members).find_by!(token: url_params[:gt])
+    # group = Group.eager_load(:members).find_by!(token: url_params[:gt])
+    @group = Group.eager_load(:members).eager_load(:song_requests).find_by!(token: url_params[:gt])
     @current_member = Group::Member.find_by!(token: url_params[:token])
-    @group = group_schema(group)
     @questions = QuestionAndAnswer.all
+  end
+
+  def accept
+    group_member = Group::Member.find_by!(token: url_params[:token])
+    group_member.confirm_rsvp!
+  end
+
+  def decline
+
   end
 
   private

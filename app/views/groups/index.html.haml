@@ -82,7 +82,7 @@
                           %tr.hover:bg-grey-lighter
                             %td.py-4.px-6.border-b.border-grey-light= member.full_name
                             %td.py-4.px-6.border-b.border-grey-light
-                              - if member.has_confirmed
+                              - if member.has_confirmed?
                                 %span.text-sm.font-medium.bg-green-100.py-1.px-2.rounded.text-green-500.align-middle="YES"
                               - else
                                 %span.text-sm.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle="NO"

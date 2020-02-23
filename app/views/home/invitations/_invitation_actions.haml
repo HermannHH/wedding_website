@@ -1,0 +1,13 @@
+- if member.not_yet_responded?
+  .flex.flex-col
+    = link_to "Accept Invitation", invitation_path(member.token, intent: "accept" ), method: :patch, remote: true, class: "bg-green-200 hover:bg-green-300 text-green-500 hover:text-green-600 font-bold my-2 py-2 px-4 rounded w-full text-center"
+    = link_to "Decline Invitation", invitation_path(member.token, intent: "decline" ), method: :patch, remote: true, class: "bg-red-200 hover:bg-red-300 text-red-500 hover:text-red-600 font-bold my-2 py-2 px-4 rounded w-full text-center"
+- elsif member.has_declined?
+  .w-full.flex
+    %span.text-base.w-full.text-center.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle Sorry that you could not join us
+- elsif member.has_confirmed?
+  .w-full.flex.flex-col
+    %span.text-base.w-full.text-center.font-medium.bg-green-100.py-1.px-2.rounded.text-green-500.align-middle Thank you for accepting your invitation
+    .w-full.text-center.py-2{ data: { controller: 'expanda '}}
+      = link_to "Have any allergies?", "#", data: { action: "click->expanda#toggle" }
+      %div.border{ data: { target: "expanda.panel"}}
