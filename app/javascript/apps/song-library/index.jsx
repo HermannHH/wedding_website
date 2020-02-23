@@ -60,7 +60,7 @@ function SongLibrary({ create_song_request_path }) {
       <div className="container">
         <Async
           value={val}
-          placeholder="Start typing to search for a song..."
+          placeholder="Just start typing..."
           loadOptions={loadOptions}
           onInputChange={handleInputChange}
           onChange={opt => saveSelectedSong(opt.value)}
