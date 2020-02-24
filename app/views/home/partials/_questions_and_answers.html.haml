@@ -1,13 +1,13 @@
-.section#invitations.bg-gray-100#questions
+.section.bg-gray-100#questions
   .section--heading="Questions & Answers"
   .section--content
     .flex.flex-col{ class: "w-11/12 md:w-2/3 lg:w-2/3"}
-      %section{ class: "shadow bg-white w-full my-4", data: { controller: "accordion" }}
+      .accordion{ class: "shadow bg-white w-full my-4", data: { controller: "accordion" }}
         - @questions.each do |question|
           %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem" }}
             .border-l-2.border-transparent
-              %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
-                %span.text-gray-600.font-normal.text-xl= question.question
+              .accordion--header
+                %span= question.question
                 .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
                   / icon by feathericons.com
                   %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}

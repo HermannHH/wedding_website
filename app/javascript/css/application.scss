@@ -113,18 +113,7 @@ html {
 }
 
 
-.accordion-panel {
-  // transition: height 350ms ease-in-out;
-  max-height: 0;
-  overflow: hidden;
 
-  // &.active {
-  //   max-height: 20px;
-  // }
-
-  // transition: max-height 0.2s ease-in-out;
-  transition: all 0.3s ease;
-}
 
 .polaroid-images {
   .polaroid-image-item {
@@ -232,10 +221,40 @@ html {
 .section {
   @apply w-full flex flex-col pb-16;
   &--heading {
-    @apply w-full pt-16 pb-8 text-4xl text-center px-8;
+    @apply w-full pt-16 pb-8 text-2xl text-center px-8 leading-6;
     @extend .typewriter;
+    @media(min-width: theme('screens.md')) {
+      @apply text-3xl;
+    }
+    @media(min-width: theme('screens.lg')) {
+      @apply text-4xl;
+    }
   };
   &--content {
     @apply w-full flex flex-col justify-center items-center;
   }
 }
+
+
+.accordion{
+  .accordion--header {
+    @apply flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none;
+    > span {
+      @apply text-gray-600 font-normal text-base leading-6;
+      @media(min-width: theme('screens.md')) {
+        @apply text-lg;
+      }
+      @media(min-width: theme('screens.lg')) {
+        @apply text-xl;
+      }
+    }
+  }
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+}
+
+// %header.flex.justify-between.items-center.p-5.pl-8.pr-8.cursor-pointer.select-none
+//                 %span.text-gray-600.font-normal.text-xl= question.question
