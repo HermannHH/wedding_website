@@ -1,8 +1,6 @@
-.w-full.flex.py-20.justify-center#song-request
-  %div{ class: "flex flex-col w-1/2"}
-    .flex.w-full.pt-2.pb-12.justify-center.items-center.flex-col
-      %h2.text-4xl.typewriter.mb-4.mt-2="Request a song"
-      %p.text-base.leading-7.text-gray-500.text-center
-        Search & select as many songs as you'd like to hear (& dance to) on the wedding night.
-      .w-full.my-8.flex.justify-center.items-center
-        = react_component('song-library', props: { create_song_request_path: api_v1_groups_member_songs_path(member_token: @current_member.token )}, html_class: "w-full")
+.section#song-request
+  .section--heading.has-explainer="Request a song"
+  .section--explainer="Search & select as many songs as you'd like to hear (& dance to) on the wedding night."
+  .section--content
+    %div{ class: "w-11/12 md:w-3/5 lg:w-1/2 mt-6"}
+      = react_component('song-library', props: { create_song_request_path: api_v1_groups_member_songs_path(member_token: @current_member.token )}, html_class: "w-full")
