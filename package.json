@@ -6,11 +6,12 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
-    "@types/react": "^16.9.21",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "@types/react": "^16.9.21",
+    "axios": "^0.19.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
