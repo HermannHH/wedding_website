@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import Async from 'react-select/async';
 import axios from 'axios';
 
@@ -8,7 +8,6 @@ var timeout = null;
 
 function SongLibrary({ create_song_request_path }) {
 
-  console.log('create_song_request_path', create_song_request_path)
   const [ val, setVal ] = useState('');
 
   function handleInputChange(value) {

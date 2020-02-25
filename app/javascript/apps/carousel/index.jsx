@@ -1,5 +1,4 @@
 import React from 'react';
-// import { hot } from 'react-hot-loader/root';
 
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
