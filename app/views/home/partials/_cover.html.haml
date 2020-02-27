@@ -1,9 +1,11 @@
 -# Cover
-.flex.justify-center.items-center.w-full.h-screen.bg-no-repeat.bg-cover.relative.z-40{ style: "background-image: url(#{image_url 'cover.JPG'})"}
-  .layer.absolute.w-full.h-screen.top-0.left-0#cover-layer
+.flex.justify-center.items-center.w-full.bg-no-repeat.bg-cover.relative.z-40{ data: { controller: "image"}}
+  -# { style: "height: 30vh; background-image: url('https://ik.imagekit.io/nhrknfxy8/cover_y5eg__E0_O.JPG?tr=w-500:w-200,h-200,cm-extract')"}
+  .layer.absolute.w-full.h-full.top-0.left-0#cover-layer
   -# %h1.text-6xl.font-bold.text-white="Hermann & Samantha"
   -# .z-50
   -#   = image_tag "tester.png"
+  = render partial: "home/partials/navbar"
 
 -# TODO: Add Date
 -# TODO: Replace with correct image

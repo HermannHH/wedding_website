@@ -7,74 +7,23 @@
     image_path("polaroids/3.jpg"),
     image_path("polaroids/4.jpg"),
     image_path("polaroids/5.jpg"),
-    image_path("polaroids/6.jpg"),
-    image_path("polaroids/7.jpg"),
-    image_path("polaroids/8.jpg"),
+    image_path("polaroids/6.jpg")
   ]
--# %section
--#   .pt-20.pb-32
--#     .w-full.flex.justify-center#questions
--#       %div{ class: "flex flex-col w-2/3"}
--#         .flex.w-full.pt-2.pb-32.justify-center
--#           %h2.text-4xl.typewriter.text-white="Our Memories"
--#     = react_component('gallery', props: { data: data }, html_class: nil)
+-#
+-# image_path("polaroids/7.jpg"),
+-# image_path("polaroids/8.jpg"),
 
-
--# .section#memories.pantene-background
--#   .section--heading.white="Our Memories"
--#   .section--content
--#     = react_component('gallery', props: { data: data }, html_class: nil)
-
-
--# .slideshow
--#   - data.each do |image|
--#     .slideshow--item{ style: "background-image: url(#{image})"}
--#   - data.each do |image|
--#     .slideshow--item{ style: "background-image: url(#{image})"}
--#   - data.each do |image|
--#     .slideshow--item{ style: "background-image: url(#{image})"}
 .section#memories.pantene-background
   .section--heading.white="Our Memories"
   .section--content
-    .slider
-      .slide-track
+    .slider{ data: { controller: 'slider'}}
+      .slide-track{ data: { target: "slider.slideTrack"}}
         - data.each do |image|
-          .slide
-            .slide--image{ style: "background-image: url(#{image})"}
-        - data.each do |image|
-          .slide
-            .slide--image{ style: "background-image: url(#{image})"}
-        - data.each do |image|
-          .slide
+          .slide{ data: { target: "slider.slideItem", image: image}}
             .slide--image{ style: "background-image: url(#{image})"}
         -# - data.each do |image|
         -#   .slide
         -#     .slide--image{ style: "background-image: url(#{image})"}
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png", :width => "250"}/
-    -# .slide
-    -#   %img{:alt => "", :height => "100", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png", :width => "250"}/
+        -# - data.each do |image|
+        -#   .slide
+        -#     .slide--image{ style: "background-image: url(#{image})"}

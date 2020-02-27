@@ -43,7 +43,11 @@ export default class extends Controller {
 
   handleVideoDimensionsSet = () => {
     var elWidth = document.body.clientWidth;
-    var elHeight = elWidth * 0.5625;
+    if(elWidth <=768) {
+      var elHeight = 500;
+    } else {
+      var elHeight = 500;
+    }
     this.element.style.width = elWidth + "px";
     this.element.style.height = elHeight + "px";
   }
