@@ -18,4 +18,9 @@ class ErrorsController < ApplicationController
       format.html { render status: 500 }
     end
   end
+
+
+  private
+
+  layout 'public'
 end
