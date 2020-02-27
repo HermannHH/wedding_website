@@ -5,16 +5,16 @@
     image_path("polaroids/1.jpg"),
     image_path("polaroids/2.jpg"),
     image_path("polaroids/3.jpg"),
-    image_path("polaroids/4.jpg")
+    image_path("polaroids/4.jpg"),
+    image_path("polaroids/7.jpg"),
+    image_path("polaroids/8.jpg")
   ]
 -#
--# image_path("polaroids/7.jpg"),
--# image_path("polaroids/8.jpg"),
+-#
 
 .section#memories.pantene-background
   .section--heading.white="Our Memories"
-  .section--content
-    .slider{ data: { controller: 'slider'}}
-      .slide-track{ data: { target: "slider.slideTrack"}}
-        - data.each do |image|
-          .slide{ data: { target: "slider.slideItem", image: image}}
+  .swiper-container{ data: { controller: 'swiper'}}
+    .swiper-wrapper
+      - data.each do |image|
+        .swiper-slide{ style: "background-image: url('#{image}')"}

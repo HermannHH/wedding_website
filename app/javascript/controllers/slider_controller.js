@@ -16,6 +16,12 @@ export default class extends Controller {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
     console.log('swiper loaded', this.slideItemTargets.length);
       // this.toInfinityAndBeyond();
+      new Swiper (this.element, {
+        effect: 'fade',
+        autoplay: {
+          delay: 5000,
+        },
+      })
   }
 
   // toInfinityAndBeyond = () => {
