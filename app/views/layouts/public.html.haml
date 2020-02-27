@@ -7,6 +7,10 @@
     %meta{:content => "Your personal link to our wedding page", :property => "og:description"}
     %meta{:content => "https://ik.imagekit.io/nhrknfxy8/cover_D8yZnqPX5I.JPG?tr=w-500:w-1200,h-630,cm-extract", :property => "og:image"}
     %meta{:content => "https://hermantha.com", :property => "og:url"}
+    %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon", :sizes => "180x180"}/
+    %link{:href => "/favicon-32x32.png", :rel => "icon", :sizes => "32x32", :type => "image/png"}/
+    %link{:href => "/favicon-16x16.png", :rel => "icon", :sizes => "16x16", :type => "image/png"}/
+    %link{:href => "/site.webmanifest", :rel => "manifest"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

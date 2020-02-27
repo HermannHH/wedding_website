@@ -1,7 +1,7 @@
 -# Navbar
-%nav.navbar{ data: { controller: "navbar"}}
+%nav.navbar.hidden.lg:flex.w-full{ data: { controller: "navbar"}}
   .hidden{ data: { "target": "navbar.initialOffset"}}
-  .flex.justify-between
+  .flex.justify-between.w-full
     .flex.ml-6
       #white-icon= image_tag "icon-white.svg", style: "width: 80px"
       #dark-icon= image_tag "icon_black.png", style: "width: 40px"

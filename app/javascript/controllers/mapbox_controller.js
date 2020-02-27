@@ -19,10 +19,13 @@ export default class extends Controller {
     var latLng = [-34.036053, 18.801706];
     var html = `
       <div>
-        <a target="_blank" href="https://goo.gl/maps/2gkZbN7ndL2JsWtH9" class="bg-gray-300 w-full my-2 font-bold py-2 px-4 rounded flex justify-center items-center">
+        <a target="_blank" href="https://goo.gl/maps/2gkZbN7ndL2JsWtH9" class="bg-blue-100 hover:bg-blue-500 text-white w-full my-2 font-bold py-2 px-4 rounded flex justify-center items-center">
           Open in Google Maps
         </a>
-        <a target="_blank" href="https://m.uber.com/ul/?action=setPickup&client_id=ycyh-QdfEzc3PDM8id7OO08z0n-tYAr-&pickup=my_location&dropoff[formatted_address]=Winery%20Road%20Forest%2C%20Winery%20Road%2C%20Firgrove%2C%20South%20Africa&dropoff[latitude]=-34.037031&dropoff[longitude]=18.801770" class="bg-gray-300 w-full my-2 font-bold py-2 px-4 rounded flex justify-center items-center">
+        <a target="_blank" href="https://maps.apple.com/?address=Stellenbosch,%20WC,%207600,%20South%20Africa&auid=5450986685257225906&ll=-34.026713,18.808921&lsp=9902&q=Winery%20Road%20Forest&_ext=ChkKBAgEED4KBAgFEAMKBQgGEIABCgQIChAAEiQp9Dp/wYgDQcAxO38Xac7OMkA5qHZE4k0DQcBBxYDoelzPMkA%3D" class="bg-blue-100 hover:bg-blue-500 text-white w-full my-2 font-bold py-2 px-4 rounded flex justify-center items-center">
+          Open in Apple Maps
+        </a>
+        <a target="_blank" href="https://m.uber.com/ul/?action=setPickup&client_id=ycyh-QdfEzc3PDM8id7OO08z0n-tYAr-&pickup=my_location&dropoff[formatted_address]=Winery%20Road%20Forest%2C%20Winery%20Road%2C%20Firgrove%2C%20South%20Africa&dropoff[latitude]=-34.037031&dropoff[longitude]=18.801770" class="bg-blue-100 hover:bg-blue-500 text-white w-full my-2 font-bold py-2 px-4 rounded flex justify-center items-center">
           Book an Uber
         </a>
 
