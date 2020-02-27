@@ -15,22 +15,22 @@ export default class extends Controller {
   connect() {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
     console.log('swiper loaded', this.slideItemTargets.length);
-      this.toInfinityAndBeyond();
+      // this.toInfinityAndBeyond();
   }
 
-  toInfinityAndBeyond = () => {
-    // console.log('this.slideTrackTarget', this.slideTrackTarget)
-    setInterval(() => {
-      this.slideItemTargets.forEach(element => {
-        var bounds = element.getBoundingClientRect();
-        console.log('bounds', element, bounds.left)
-        if(bounds.left < 0) {
-          console.log('i am smoooolllll')
-          // this.slideTrackTarget.appendChild(element);
-          element.remove();
-        }
-      });
+  // toInfinityAndBeyond = () => {
+  //   // console.log('this.slideTrackTarget', this.slideTrackTarget)
+  //   setInterval(() => {
+  //     this.slideItemTargets.forEach(element => {
+  //       var bounds = element.getBoundingClientRect();
+  //       console.log('bounds', element, bounds.left)
+  //       if(bounds.left < 0) {
+  //         console.log('i am smoooolllll', element)
+  //         this.slideTrackTarget.appendChild(element);
+  //         // element.remove();
+  //       }
+  //     });
 
-    }, 3000);
-  }
+  //   }, 3000);
+  // }
 }
