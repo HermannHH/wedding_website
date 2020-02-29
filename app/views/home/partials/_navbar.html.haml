@@ -2,15 +2,14 @@
 %nav.navbar.hidden.lg:flex.w-full{ data: { controller: "navbar"}}
   .hidden{ data: { "target": "navbar.initialOffset"}}
   .flex.justify-between.w-full
-    .flex.ml-6
+    .flex.ml-6.cursor-pointer{ data: { action: "click->navbar#scrollToSection"}}
       #white-icon= image_tag "icon-white.svg", style: "width: 80px"
       #dark-icon= image_tag "icon_black.png", style: "width: 40px"
     .flex.h-auto.items-center
-      -# = link_to "About Us", "#", class: "link", data: { action: "click->navbar#scrollToSection", target_hash: "#about-us"}
       = link_to "Our Memories", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#memories"}
       = link_to "Countdown", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#timer-section"}
       = link_to "Our Engagement", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#engagement"}
-      = link_to "Questions", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#questions"}
       = link_to "RSVP", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#invitations"}
+      = link_to "Questions", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#questions"}
       = link_to "Request a song", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#song-request"}
       = link_to "Location", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#location"}
