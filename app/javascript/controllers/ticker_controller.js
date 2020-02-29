@@ -7,7 +7,7 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
   static targets = [ "track", "slide", "item" ]
@@ -16,17 +16,16 @@ export default class extends Controller {
     console.log('hello')
   }
 
-
   mouseOver(event) {
     this.slideTargets.forEach(element => {
       element.classList.add('paused');
     });
   }
 
-
   mouseOut(event) {
     this.slideTargets.forEach(element => {
       element.classList.remove('paused');
     });
   }
+
 }
