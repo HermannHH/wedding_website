@@ -9,10 +9,10 @@ export default class extends Controller {
   }
 
   handleVideoDimensionsSet = () => {
-    var elWidth = document.body.clientWidth;
+    var elWidth = document.documentElement.clientWidth;
     this.element.style.width = elWidth + "px";
 
-    var viewportHeight = document.body.clientHeight;
+    var viewportHeight = document.documentElement.clientHeight;
     var ratioHeight = elWidth * 0.5625;
     var heightRatio = ratioHeight / viewportHeight;
     if(heightRatio >= 0.8) {
