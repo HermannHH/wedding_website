@@ -402,93 +402,87 @@ html {
   }
 }
 
-.block {
-  overflow: hidden;
-  width: 800px;
-  margin: 50px auto;
-  background: #fff;
+
+
+@keyframes slideshow {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-100%);}
 }
 
-.slider {
-  overflow: hidden;
-  width: 100%;
-  border: thin solid red;
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+
+%gradientBlur {
+  height: 500px;
+  width: 70px;
+  position: absolute;
+  content: "";
+  background: linear-gradient(to right, #eabeb0 0%, rgba(255,255,255,0) 100%);
+  z-index: 2;
+}
+
+.image-ticker {
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &--track {
-    width: auto;
-    border: thin solid blue;
+    width: 100vw;
+    height: 500px;
+    position: relative;
+    display: flex;
+    overflow: hidden;
 
-  }
-  &--item {
-    border: thin solid green;
-    display: inline-block;
-    width: auto;
-    float: none;
-    padding: 0 10px;
-  }
-}
+    &::before {
+      @extend %gradientBlur;
+      left: 0;
+      top: 0;
+    }
 
-
-#photo-ticker{
-  width: 1000px;
-  overflow: hidden;
-  margin: 50px auto;
-  background: white;
-  border: thin solid red;
-  @apply flex;
-  .photobanner {
-    @apply flex;
-    height: 233px;
-    width: 3550px;
-    margin-bottom: 80px;
+    &::after {
+      @extend %gradientBlur;
+      right:0;
+      top:0;
+      transform: rotateZ(180deg);
+    }
   }
 
+  &--slide {
+    height: auto;
+    display: flex;
+    align-items: center;
+    animation: slideshow 30s linear infinite;
+    animation-play-state: running;
+    cursor: pointer;
+    &.paused {
+      animation-play-state: paused;
+    }
+    &-item {
+      @apply bg-white shadow pt-3 px-3 pb-10;
+      height: 300px;
+      width: 300px;
+      @for $i from 1 through 24 {
+        &:nth-child(#{$i}) {
+          z-index: randomNum(1, 20);
+          -webkit-transform: rotate(#{randomNum(36, -36)}deg);
+          -moz-transform: rotate(#{randomNum(36, -36)}deg);
+          transform: rotate(#{randomNum(36, -36)}deg);
+        }
+      }
+      .polaroid-image {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
 
-  @keyframes "bannermove" {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: -2125px;
     }
   }
-  @-moz-keyframes "bannermove" {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: -2125px;
-    }
-  }
-  @-webkit-keyframes "bannermove" {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: -2125px;
-    }
-  }
-  @-ms-keyframes "bannermove" {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: -2125px;
-    }
-  }
-  @-o-keyframes "bannermove" {
-    0% {
-      margin-left: 0px;
-    }
-    100% {
-      margin-left: -2125px;
-    }
-  }
-  .first {
-    -webkit-animation: bannermove 30s linear infinite;
-    -moz-animation: bannermove 30s linear infinite;
-    -ms-animation: bannermove 30s linear infinite;
-    -o-animation: bannermove 30s linear infinite;
-    animation: bannermove 30s linear infinite;
-  }
-
 }
