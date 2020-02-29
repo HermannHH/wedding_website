@@ -12,9 +12,36 @@
 -#
 -#
 
-.section#memories.pantene-background
-  .section--heading.white="Our Memories"
-  .swiper-container{ data: { controller: 'swiper'}}
-    .swiper-wrapper
-      - data.each do |image|
-        .swiper-slide{ style: "background-image: url('#{image}')"}
+-# .section#memories.pantene-background
+-#   .section--heading.white="Our Memories"
+-#   .swiper-container{ data: { controller: 'swiper'}}
+-#     .swiper-wrapper
+-#       - data.each do |image|
+-#         .swiper-slide{ data: { target: "swiper.slide"}}
+-#           .slide--image{ style: "background-image: url('#{image}')"}
+
+-# .slider{ data: { controller: 'slider'}}
+-#   .slider--track{ data: { target: 'slider.track' }}
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200?text=First"}/
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200?text=Second"}/
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200?text=Third"}/
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200"}/
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200"}/
+-#     .slider--item{ data: { target: 'slider.item' }}
+-#       %img{:src => "http://fpoimg.com/200x200"}/
+
+
+-# = react_component('gallery', props: {}, html_class: '')
+
+#photo-ticker
+  .photobanner
+    - data.each_with_index do |image, idx|
+      - if idx == 0
+        %img.first{:alt => "", :src => image}
+      - else
+        %img{:alt => "", :src => image}
