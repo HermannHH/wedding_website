@@ -32,8 +32,12 @@ export default class extends Controller {
 
   scrollToSection = (event) => {
     event.preventDefault();
-    var fromTop = document.querySelector(event.srcElement.dataset.targetHash).offsetTop;
-    window.scroll({ top: fromTop - 85, left: 0, behavior: 'smooth' });
+    if (event.srcElement.dataset.targetHash) {
+      var fromTop = document.querySelector(event.srcElement.dataset.targetHash).offsetTop;
+      window.scroll({ top: fromTop - 85, left: 0, behavior: 'smooth' });
+    } else {
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    }
   }
 
 }
