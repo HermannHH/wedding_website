@@ -4,12 +4,9 @@ export default class extends Controller {
   static targets = [ "item" ]
 
   connect() {
-    // this.setupExpandFunctionality();
   }
 
   toggleItem(event) {
-
-    // console.log('this.itemTargets', this.itemTargets)
     const panel = event.currentTarget.querySelector('.accordion-panel');
 
     if (panel.style.maxHeight) {
