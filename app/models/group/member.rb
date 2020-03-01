@@ -66,6 +66,10 @@ class Group::Member < ApplicationRecord
     Phonelib.parse(self.phone_number, 'ZA').to_s
   end
 
+  def reset!
+    self.update(rsvp_confirmed_at: nil, invitation_declined_at: nil, dietary_preference: nil)
+  end
+
   # def personal_url
   #   # https://stackoverflow.com/questions/341143/can-rails-routing-helpers-i-e-mymodel-pathmodel-be-used-in-models
   #   Rails.application.routes.url_helpers.root_url(gt: self.group.token , token: self.token)

@@ -13,6 +13,7 @@ class Home::InvitationsController < ApplicationController
 
   def accept
     @group_member = Group::Member.find_by!(token: url_params[:token])
+    ::ResponseCaptureWorker.perform_async( @group_member.token, 'accept' )
     respond_to do |format|
       if @group_member.confirm_rsvp!
         format.js
@@ -24,6 +25,7 @@ class Home::InvitationsController < ApplicationController
 
   def decline
     @group_member = Group::Member.find_by!(token: url_params[:token])
+    ::ResponseCaptureWorker.perform_async( @group_member.token, 'decline' )
     respond_to do |format|
       if @group_member.decline_invitation!
         format.js
