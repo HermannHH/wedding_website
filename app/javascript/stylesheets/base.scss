@@ -247,7 +247,7 @@ html {
     height: auto;
     display: flex;
     align-items: center;
-    animation: slideshow 30s linear infinite;
+    animation: slideshow 60s linear infinite;
     animation-play-state: running;
     cursor: pointer;
     &.paused {
