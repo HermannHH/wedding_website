@@ -81,7 +81,7 @@ gem 'devise'
 gem 'phonelib'
 
 # https://github.com/mperham/sidekiq
-gem 'sidekiq'
+gem 'sidekiq', '5.2.7'
 
 # https://github.com/sinatra/sinatra
 gem 'sinatra', require: false
