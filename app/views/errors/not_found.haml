@@ -1,9 +1,11 @@
 .container
   =# image_tag('page_not_found.jpg', 'image not found')
   -# = image_tag("404.jpg", size: "100x200", alt: "page not found")
-  %div
-    %h1 OOPS!!!!! 404
-    %p We’re sorry but it appears that we can’t find the page you were looking for. Usually this occurs because of a page that previously existed was removed or you’ve mistyped the address.
+  .content
+    .image-wrapper
+      %image{ src: "https://ik.imagekit.io/nhrknfxy8/icon-white_RkisiFqRH.svg" }
+    %h1="Are you using your personal link?"
+    %p="We could not find what you were looking for. Please make sure that you always use the personal link we sent you. Please contact Samantha with any queries."
 
 
 :css
@@ -13,6 +15,7 @@
       "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     color: #727272;
     line-height: 1.6;
+    background-color: #eabeb0;
   }
 
   .container {
@@ -21,6 +24,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .content {
+    width: 80%;
+    @media (min-width: 768px) {
+      width: 60%;
+    }
+    @media (min-width: 1024px) {
+      width: 50%;
+    }
+  }
+
+  .image-wrapper {
+    margin: 30px 0;
   }
 
   h1 {
@@ -43,4 +60,5 @@
   p {
     font-size: 16px;
     margin: 1em 0;
+    line-height: 1.666em;
   }
