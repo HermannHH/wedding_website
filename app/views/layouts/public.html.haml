@@ -19,6 +19,9 @@
     %script{:src => "https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js"}
     %link{:href => "https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css", :rel => "stylesheet"}
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    #loading-screen.fixed.w-full.h-screen.bg-white.flex.z-50.justify-center.items-center
+      .flex.flex-col.justify-center.items-center
+        .my-12
+          = image_tag "https://ik.imagekit.io/nhrknfxy8/icon-pantene_aUHF0cUf4.svg", width: "200"
+        .text-3xl.text-gray-600="#hermantha2020"
+    #body-content.overflow-hidden= yield
