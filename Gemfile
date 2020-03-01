@@ -89,4 +89,9 @@ gem 'sinatra', require: false
 # https://github.com/schneems/puma_worker_killer
 gem 'puma_worker_killer'
 
+group :production do
+  # https://github.com/getsentry/raven-ruby
+  gem "sentry-raven"
+end
+
 

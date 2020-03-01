@@ -56,9 +56,7 @@ export default class extends Controller {
   static targets = [ "loader", "content", "typed" ]
 
   connect() {
-    console.log('hello body');
     DomUtils.disableScroll();
-
     var options = {
       strings: [`
         <p class="text-3xl text-gray-600 leading-10 typewriter">Love, Laughter and Happily Ever After.</p>
@@ -76,6 +74,7 @@ export default class extends Controller {
     };
 
     var typed = new Typed(this.typedTarget, options);
+    this.bindErrorToast();
   }
 
 
@@ -87,5 +86,16 @@ export default class extends Controller {
       this.loaderTarget.remove();
     }, 1000);
     DomUtils.enableScroll();
+  }
+
+  bindErrorToast = () => {
+    document.addEventListener('ajax:error', () => {
+      var el = document.createElement('div');
+      el.style.cssText = 'display:hidden;';
+      el.setAttribute('data-notyf-type', 'error');
+      el.setAttribute('data-notyf-message', "Something went wrong. Please try again later...or phone Samantha");
+      el.setAttribute('data-controller', 'notyf');
+      document.body.appendChild(el);
+    });
   }
 }

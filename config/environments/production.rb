@@ -128,3 +128,7 @@ end
 
 
 Rails.application.default_url_options = Rails.application.config.action_mailer.default_url_options
+
+Raven.configure do |config|
+  config.dsn = 'https://03e5ce072071432ab6b3db17fc1c48d0:e2d0ce5b13c04e54a94d3e219cf90316@sentry.io/3378104'
+end
