@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "days", "hours", "minutes", "seconds" ]
 
   connect() {
-    const deadline = new Date("2020-05-02 16:00");
+    const deadline = new Date(2020, 4, 2, 16, 0, 0).toLocaleString("en-ZA", {timeZone: "Africa/Johannesburg"});
     this.initializeClock(deadline);
   }
 
@@ -19,7 +19,7 @@ export default class extends Controller {
     const updateClock = () => {
       var t = this.getTimeRemaining(endtime);
 
-      daysSpan.innerHTML = t.days;
+      daysSpan.innerHTML = parseInt(t.days, 10);
       hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
       minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
       secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);

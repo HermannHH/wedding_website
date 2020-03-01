@@ -28,5 +28,5 @@ import "notyf/notyf.min.js";
 //   setTimeout(() => {
 //     loadingScreen.classList.add('hidden');
 //     bodyContent.classList.remove('hidden');
-//   }, 2000);
+//   }, 3000);
 // });
