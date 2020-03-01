@@ -276,3 +276,10 @@ html {
   }
 }
 
+
+.ghost-button {
+  @apply text-blue-400 text-sm font-medium cursor-pointer px-2 py-1 rounded;
+  &:hover {
+    @apply text-blue-700 bg-blue-200;
+  }
+}

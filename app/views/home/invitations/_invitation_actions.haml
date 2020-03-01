@@ -11,17 +11,17 @@
 
     - if member.dietary_preference.blank?
       .py-2.expanda{ data: { controller: 'expanda '}}
-        .w-full.text-center
-          = link_to "Have any allergies?", "#", data: { target: "expanda.openEl", action: "click->expanda#toggle" }
+        .w-full.text-center.mt-3
+          = link_to "Any dietary preferences?", "#", class: "ghost-button" , data: { target: "expanda.openEl", action: "click->expanda#toggle" }
         .w-full.text-right
-          = link_to "X", "#", data: { target: "expanda.closeEl", action: "click->expanda#toggle" }, class: "hidden"
+          = link_to "X", "#" , data: { target: "expanda.closeEl", action: "click->expanda#toggle" }, class: "hidden ghost-button"
         .expanda--panel{ data: { target: "expanda.panel"}}
           = form_with model: member, url: invitation_path(member.token), method: :patch, remote: true do |f|
             .my-2
               = f.text_area :dietary_preference, placeholder: "Tell us if you are Vegan, Vegatarian or have any food allergies...",class: "w-full bg-gray-100 rounded p-4 resize-none"
             .my-2.flex.w-full.justify-end
-              = f.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded", data: { disable_with: "Saving..."}
+              = f.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer", data: { disable_with: "Saving..."}
     - else
-      .py-4.w-full
-        %h5.text-sm.font-semibold="Dietary Preferences"
+      .py-4.w-full.mt-3
+        %h5.text-sm.font-semibold.text-gray-500="Dietary Preferences"
         %p.text-sm= member.dietary_preference
