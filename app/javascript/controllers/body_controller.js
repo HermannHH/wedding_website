@@ -69,7 +69,9 @@ export default class extends Controller {
       typeSpeed: 30,
       showCursor: false,
       onComplete: (self) => {
-        this.typingCompleted();
+        setTimeout(() => {
+          this.typingCompleted();
+        }, 1000);
       }
     };
 
@@ -78,6 +80,7 @@ export default class extends Controller {
 
 
   typingCompleted = () => {
+    window.scrollTo(0, 0);
     this.loaderTarget.classList.add('fade-out-1s');
     this.contentTarget.classList.add('fade-in-1s');
     setTimeout(() => {
