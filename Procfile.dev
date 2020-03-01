@@ -1,2 +1,5 @@
 web: bundle exec puma -t 5:5 -p ${PORT:-5000} -e ${RACK_ENV:-development}
+redis: redis-server /usr/local/etc/redis.conf
+worker: bundle exec sidekiq -e development -C config/sidekiq.yml
+log: tail -f log/development.log
 webpacker: ./bin/webpack-dev-server
