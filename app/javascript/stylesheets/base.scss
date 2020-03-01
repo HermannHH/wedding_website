@@ -228,31 +228,18 @@ html {
     position: relative;
     display: flex;
     overflow: hidden;
-
-    // &::before {
-    //   // @extend %gradientBlur;
-    //   left: 0;
-    //   top: 0;
-    // }
-
-    // &::after {
-    //   @extend %gradientBlur;
-    //   right:0;
-    //   top:0;
-    //   transform: rotateZ(180deg);
-    // }
   }
 
   &--slide {
     height: auto;
     display: flex;
     align-items: center;
-    animation: slideshow 60s linear infinite;
+    animation: slideshow 140s linear infinite;
     animation-play-state: running;
-    cursor: pointer;
-    &.paused {
-      animation-play-state: paused;
-    }
+    // cursor: pointer;
+    // &.paused {
+    //   animation-play-state: paused;
+    // }
     &-item {
       @apply bg-white shadow pt-3 px-3 pb-10;
       height: 300px;
@@ -271,6 +258,13 @@ html {
         background-size: cover;
         background-repeat: no-repeat;
       }
+
+      .polaroid-caption {
+        @apply  w-full text-center mt-1 text-base text-gray-500 tracking-widest font-light;
+        @extend .typewriter;
+      }
+
+
 
     }
   }
