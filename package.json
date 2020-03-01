@@ -19,7 +19,8 @@
     "smoothscroll-polyfill": "^0.4.4",
     "stimulus": "^1.1.1",
     "tailwindcss": "^1.2.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.11"
   },
   "version": "0.1.0",
   "devDependencies": {

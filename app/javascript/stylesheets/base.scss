@@ -48,6 +48,10 @@ html {
   background-color: #eabeb0;
 }
 
+.text-pantene {
+  color: #eabeb0;
+}
+
 .countdown {
   @apply flex;
   &--item {
@@ -296,4 +300,23 @@ html {
   -moz-transition: all 5s ease-in-out;
   transition: all 5s ease-in-out;
 
+}
+
+
+.fade-out-1s
+{
+    opacity: 0;//or anything you need
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    overflow: hidden;
+}
+
+.fade-in-1s
+{
+    opacity: 100;//or anything you need
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    overflow: hidden;
 }
