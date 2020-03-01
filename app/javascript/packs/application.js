@@ -17,8 +17,6 @@ require("../stylesheets/base");
 // const imagePath = (name) => images(name, true)
 
 import "controllers";
-import "photoswipe/dist/photoswipe.css";
-import "photoswipe/dist/default-skin/default-skin.css";
 import "notyf/notyf.min.css";
 import "notyf/notyf.min.js";
 
