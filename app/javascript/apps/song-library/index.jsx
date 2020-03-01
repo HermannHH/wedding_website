@@ -25,6 +25,8 @@ function SongLibrary({ create_song_request_path }) {
   }
 
   async function saveSelectedSong(opt) {
+    var el = document.createElement('div');
+    el.style.cssText = 'display:hidden;';
     try {
       const data = {
         song: {
@@ -34,8 +36,15 @@ function SongLibrary({ create_song_request_path }) {
         }
       }
       axios.post(create_song_request_path, data);
+      el.setAttribute('data-notyf-type', 'success');
+      el.setAttribute('data-notyf-message', 'Your song request has been added.');
     } catch (error) {
-      console.error('error', error)
+      console.error('error', error);
+      el.setAttribute('data-notyf-type', 'error');
+      el.setAttribute('data-notyf-message', 'Your song choice could not be added at this point in time');
+    } finally {
+      el.setAttribute('data-controller', 'notyf');
+      document.body.appendChild(el);
     }
   }
 

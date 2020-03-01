@@ -1,1 +1,15 @@
-document.getElementById("invitation-actions-<%= @group_member.token %>").innerHTML = "<%= j render(partial: 'invitation_actions', locals: { member: @group_member }) %>";
+var el = document.createElement('div');
+el.style.cssText = 'display:hidden;';
+
+<% if @group_member.persisted? %>
+  document.getElementById("invitation-actions-<%= @group_member.token %>").innerHTML = "<%= j render(partial: 'invitation_actions', locals: { member: @group_member }) %>";
+  el.setAttribute('data-notyf-type', 'success');
+  el.setAttribute('data-notyf-message', "Awesome! Can't wait to see you at the wedding");
+<% else %>
+  el.setAttribute('data-notyf-type', 'error');
+  el.setAttribute('data-notyf-message', "Something went wrong. Please try again later...or phone Samantha");
+<% end %>
+
+
+el.setAttribute('data-controller', 'notyf');
+document.body.appendChild(el);
