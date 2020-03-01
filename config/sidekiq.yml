@@ -1,0 +1,8 @@
+:queues:
+  - default
+development:
+  :concurrency: 5
+  :logfile: ./log/sidekiq.log
+  :verbose: true
+production:
+  :concurrency: <%= ENV["SIDEKIQ_CONCURRENCY"] %>

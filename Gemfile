@@ -79,3 +79,14 @@ gem 'devise'
 
 # https://github.com/daddyz/phonelib
 gem 'phonelib'
+
+# https://github.com/mperham/sidekiq
+gem 'sidekiq'
+
+# https://github.com/sinatra/sinatra
+gem 'sinatra', require: false
+
+# https://github.com/schneems/puma_worker_killer
+gem 'puma_worker_killer'
+
+

@@ -27,6 +27,23 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
+on_worker_boot do
+  # http://maso.logdown.com/posts/294308-use-sidekiq-redis-to-go-and-puma-as-free-background-job-on-heroku
+  @sidekiq_pid ||= spawn('bundle exec sidekiq -e production -C config/sidekiq.yml')
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+end
+
+before_fork do
+  require 'puma_worker_killer'
+  PumaWorkerKiller.config do |config|
+    config.ram           = 512 # mb
+    config.frequency     = 5    # seconds
+    config.percent_usage = 0.98
+    config.rolling_restart_frequency = 12 * 3600 # 12 hours in seconds
+  end
+  PumaWorkerKiller.start
+end
+
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
 # before forking the application. This takes advantage of Copy On Write
