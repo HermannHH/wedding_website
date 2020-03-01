@@ -33,7 +33,7 @@ module VideosHelper
     youtube_id = find_youtube_id url
 
     result = %(<iframe title="Engagement Video"
-                src="//www.youtube.com/embed/#{ youtube_id }"
+                src="//www.youtube.com/embed/#{ youtube_id }?rel=0"
                 frameborder="0" allowfullscreen data-controller="video"></iframe>)
     result.html_safe
   end
