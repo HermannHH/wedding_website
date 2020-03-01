@@ -23,12 +23,12 @@ import "notyf/notyf.min.css";
 import "notyf/notyf.min.js";
 
 
-document.addEventListener('turbolinks:load', function() {
-  var loadingScreen = document.getElementById('loading-screen');
-  var bodyContent = document.getElementById('body-content');
+// document.addEventListener('turbolinks:load', function() {
+//   var loadingScreen = document.getElementById('loading-screen');
+//   var bodyContent = document.getElementById('body-content');
 
-  setTimeout(() => {
-    loadingScreen.classList.add('hidden');
-    bodyContent.classList.remove('hidden');
-  }, 2000);
-});
+//   setTimeout(() => {
+//     loadingScreen.classList.add('hidden');
+//     bodyContent.classList.remove('hidden');
+//   }, 2000);
+// });
