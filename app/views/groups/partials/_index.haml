@@ -1,0 +1,90 @@
+.w-full
+  -# .py-8.px-4.flex.justify-between
+  -#   %table.text-left.w-full.border-collapse
+  -#     %thead
+  -#       %tr
+  -#         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 # Guests Invited
+  -#         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 # Guests Confirmed
+  -#     %tbody
+  -#       %tr.hover:bg-gray-100
+  -#         %td.py-4.px-6.border-b.border-gray-200
+  -#           %span.text-sm.font-medium.bg-blue-100.py-1.px-2.rounded.text-blue-500.align-middle= Group.member_count
+  -#         %td.py-4.px-6.border-b.border-gray-200
+  -#           %span.text-sm.font-medium.bg-blue-100.py-1.px-2.rounded.text-blue-500.align-middle= Group.confirmed_member_count
+
+  -# %table.text-left.w-full.border-collapse
+  -#   %thead
+  -#     %tr
+  -#       %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200="Group"
+  -#       %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200="Member Name"
+  -#   %tbody
+  -#     - @groups.each do |group|
+  -#       - group.members.each do |member|
+  -#         %tr.hover:bg-gray-100
+  -#           %td= group.name
+  -#           %td= member.full_name
+
+  -# #member-table.w-full{ data: { controller: "spreadsheet" }}
+  = react_component('member-manager', props: {}, html_class: '')
+
+  -# %div{ class: "flex flex-col w-full px-16"}
+  -#   .accordion{ class: "shadow bg-white w-full my-4", data: { controller: "accordion" }}
+  -#     - @groups.each do |group|
+  -#       %article.border-b{data: { target: "accordion.item", action: "click->accordion#toggleItem" }}
+  -#         .border-l-2.border-transparent
+  -#           .accordion--header
+  -#             %span= group.name
+  -#             .rounded-full.border.border-grey-400.w-7.h-7.flex.items-center.justify-center
+  -#               / icon by feathericons.com
+  -#               %svg{"aria-hidden" => "true", "data-reactid" => "266", :fill => "none", :height => "24", :stroke => "#606F7B", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#                 %polyline{:points => "6 9 12 15 18 9"}
+  -#           %div.accordion-panel
+  -#             .px-8.pb-5.text-grey-800
+  -#               .w-full
+  -#                 .bg-white.shadow-md.rounded.mt-6.mb-3
+  -#                   %table.text-left.w-full.border-collapse
+  -#                     / Border collapse doesn't work on this site yet but it's available in newer tailwind versions
+  -#                     %thead
+  -#                       %tr
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Name
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Phone #
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Attending
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Dietary Requirements
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Share on Whatsapp
+  -#                         %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Personal Link
+  -#                     %tbody
+  -#                       - group.members.each do |member|
+  -#                         %tr.hover:bg-gray-100
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "20%"}= member.full_name
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "20%"}= member.parsed_phone_number
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "10%"}
+  -#                             - if member.has_confirmed?
+  -#                               %span.text-sm.font-medium.bg-green-100.py-1.px-2.rounded.text-green-500.align-middle="YES"
+  -#                             - else
+  -#                               %span.text-sm.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle="NO"
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "30%"}= member.dietary_preference
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "30%"}
+  -#                             = link_to "Share on WhatsApp", "https://wa.me/#{member.parsed_phone_number.remove('+')}?text=#{CGI.escape(root_url(gt: group.token, token: member.token ))}", target: "_blank"
+  -#                           %td.py-4.px-6.border-b.border-gray-200{ width: "40%"}
+  -#                             .flex.flex-wrap.items-stretch.w-full.mb-4.relative{ data: { controller: "clipboard"}}
+  -#                               %input.flex-shrink.flex-grow.flex-auto.leading-normal.w-px.flex-1.border.h-10.border-gray-200.rounded.rounded-r-none.px-3.relative{type: "text", value: root_url(gt: group.token, token: member.token ), readonly: true, data: { target: "clipboard.source"}}
+  -#                               %button{ data: { action: "click->clipboard#copy", target: "clipboard.action" }}="Copy"
+  -#                             -# .flex
+  -#                             -#   .p-4= root_url(gt: group.token, token: member.token)
+  -#                             -#   .p-4= "Copy"
+  -#                 - if group.song_requests.size > 0
+  -#                   .bg-white.shadow-md.rounded.mb-6.mt-3
+  -#                     %table.text-left.w-full.border-collapse
+  -#                       / Border collapse doesn't work on this site yet but it's available in newer tailwind versions
+  -#                       %thead
+  -#                         %tr
+  -#                           %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Requested by
+  -#                           %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Song Name
+  -#                           %th.py-4.px-6.bg-gray-200.font-bold.uppercase.text-sm.text-grey-dark.border-b.border-gray-200 Artist Name
+  -#                       %tbody
+  -#                         - group.song_requests.each do |song_request|
+  -#                           %tr.hover:bg-gray-100
+  -#                             %td.py-4.px-6.border-b.border-gray-200= song_request.member.full_name
+  -#                             %td.py-4.px-6.border-b.border-gray-200= song_request.name
+  -#                             %td.py-4.px-6.border-b.border-gray-200= song_request.artist
+

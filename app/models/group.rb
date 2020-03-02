@@ -42,8 +42,11 @@ class Group < ApplicationRecord
 
 
   def self.import(file)
-    counter = 0
-    CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+    row_counter = 0
+    success_counter = 0
+    error_counter = 0
+    error_rows = []
+    CSV.foreach(file.path, headers: true, header_converters: :symbol).with_index( 2 ) do |row, row_number|
       group = Group.find_or_create_by!(name: row[:group_name])
       member = Group::Member.new(
         row.to_hash.slice(
@@ -55,14 +58,22 @@ class Group < ApplicationRecord
         )
       )
       member.group = group
+      row_counter += 1
       # binding.pry
       if member.save
-        counter += 1
+        success_counter += 1
       else
-        puts "#{group.name}  - #{member.errors.full_messages.join(",")}"
+        error_counter += 1
+        error_rows << row_number
+        puts "ERR: #{group.name} - #{row[:first_name]}  - #{member.errors.full_messages.join(",")}"
       end
     end
-    counter
+    return {
+      row_counter: row_counter,
+      success_counter: success_counter,
+      error_counter: error_counter,
+      error_rows: error_rows
+  }.to_hash
   end
 
   def self.to_csv

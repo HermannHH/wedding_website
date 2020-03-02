@@ -28,7 +28,7 @@ class Group::Member < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   # validates :email, presence: true, email: true, uniqueness: { scope: :group_id }
-  validates :email, presence: true, email: true
+  validates :email, email: true, allow_blank: true
 
   has_secure_token
 

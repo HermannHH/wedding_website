@@ -66,8 +66,15 @@ class GroupsController < ApplicationController
   end
 
   def import
-    count = Group.import params[:file]
-    redirect_to groups_path, notice: "Imported #{count} users"
+    @groups = Group.eager_load(:members).all
+    @count_data = Group.import params[:file]
+    respond_to do |format|
+      # if count_data
+        format.js
+      # else
+      #   format.json { render json: @group_member.errors, status: :unprocessable_entity }
+      # end
+    end
   end
 
   private

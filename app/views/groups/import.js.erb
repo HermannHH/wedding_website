@@ -1,0 +1,16 @@
+var el = document.createElement('div');
+el.style.cssText = 'display:hidden;';
+
+<% if @count_data[:error_rows].size %>
+  el.setAttribute('data-notyf-type', 'error');
+  el.setAttribute('data-notyf-message', "There were <%= @count_data[:error_counter] %> upload errors. These errors are on lines: <%= @count_data[:error_rows].join(",") %>");
+<% else %>
+  document.getElementById("groups-index").innerHTML = "<%= j render(partial: 'groups/partials/index') %>";
+  el.setAttribute('data-notyf-type', 'success');
+  el.setAttribute('data-notyf-message', "All records have been uploaded");
+
+<% end %>
+
+
+el.setAttribute('data-controller', 'notyf');
+document.body.appendChild(el);
