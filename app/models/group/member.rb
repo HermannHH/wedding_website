@@ -25,9 +25,10 @@ class Group::Member < ApplicationRecord
   belongs_to :group
   has_many :song_requests, class_name: "Group::Member::SongRequest", foreign_key: "group_member_id"
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
   # validates :email, presence: true, email: true, uniqueness: { scope: :group_id }
+  # validates :phone_number, mobile_phone: true, allow_blank: true
   validates :email, email: true, allow_blank: true
 
   default_scope { order(id: :asc) }
@@ -36,6 +37,12 @@ class Group::Member < ApplicationRecord
 
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def attendance_status
+    return "Pending" if not_yet_responded?
+    return "Declined" if has_declined?
+    return "Confirmed" if has_confirmed?
   end
 
   def confirm_rsvp!
@@ -72,14 +79,13 @@ class Group::Member < ApplicationRecord
     self.update(rsvp_confirmed_at: nil, invitation_declined_at: nil, dietary_preference: nil)
   end
 
-  # def personal_url
-  #   # https://stackoverflow.com/questions/341143/can-rails-routing-helpers-i-e-mymodel-pathmodel-be-used-in-models
-  #   Rails.application.routes.url_helpers.root_url(gt: self.group.token , token: self.token)
-  # end
+  def personal_url
+    Rails.application.routes.url_helpers.root_url(gt: self.group.token , token: self.token)
+  end
 
-  # def rsvp_path
-  #   Rails.application.routes.url_helpers.rsvp_api_v1_groups_member_path(token: self.token )
-  # end
+  def whatsapp_url
+    "https://wa.me/#{self.parsed_phone_number.remove('+')}?text=#{CGI.escape(Rails.application.routes.url_helpers.root_url(gt: self.group.token, token: self.token ))}"
+  end
 
   # def update_path
   #   Rails.application.routes.url_helpers.api_v1_groups_member_path(token: self.token)

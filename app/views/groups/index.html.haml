@@ -1,8 +1,9 @@
 .w-full
-  -# .py-8.px-4.flex.justify-between
-  -#   = form_tag import_groups_path, multipart: true, remote: true, class: "flex flex-col"  do
-  -#     = file_field_tag :file
-  -#     = submit_tag "Import", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  -#   = link_to "Export", groups_path(format: :csv), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-
+  -#   <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+  -#   <p>Drag one or more files to this Drop Zone ...</p>
+  -# </div>
+  .px-6.py-12
+    = form_tag import_groups_path, multipart: true, remote: true, class: "flex flex-col"  do
+      = file_field_tag :file
+      = submit_tag "Import", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 #groups-index=render partial: "groups/partials/index"

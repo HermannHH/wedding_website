@@ -4,23 +4,37 @@ import axios from 'axios';
 
 import 'react-data-grid/dist/react-data-grid.css';
 
+
+const StatusFormatter = (data) => {
+  return (
+    <span
+      className={`text-sm font-medium py-1 px-2 rounded align-middle
+        ${data.value == "Accepted" && 'text-green-500 bg-green-100'}
+        ${data.value == "Rejected" && 'text-red-500 bg-red-100'}
+        ${data.value == "Pending" && 'text-blue-500 bg-blue-100'}
+      `}
+  >{data.value}</span>
+  );
+};
+
+
+const ShareWhatsapp = () => {
+  return <span onClick={() => alert('ok')} className="fab fa-whatsapp ghost-button">Share</span>
+};
+
 const columns = [
-  { key: 'full_name', name: 'Name', frozen: true, width: 190, resizable: true  },
-  { key: 'actions', name: 'Actions', frozen: true, width: 80, resizable: true  },
-  { key: 'group_name', name: 'Group Name', editable: true, resizable: true},
+  { key: 'actions', name: 'Actions', frozen: true, width: 80, resizable: true },
+  { key: 'group_name', name: 'Group Name', editable: false, resizable: true},
+  { key: 'attendance_status', name: 'Status', resizable: true, formatter: StatusFormatter },
   { key: 'first_name', name: 'First Name', editable: true, resizable: true},
   { key: 'last_name', name: 'Last Name', editable: true, resizable: true},
   { key: 'email', name: 'Email', editable: true, resizable: true },
   { key: 'parsed_phone_number', name: 'Phone #', editable: true, resizable: true },
   { key: 'dietary_preference', name: 'Dietary Preference', editable: true, resizable: true }
+
+  // { key: 'token', name: 'Token', resizable: true  },
 ];
 
-function ShareOnWhatsAppLink() {
-
-  return (
-    <a>Share on WhatsApp</a>
-  )
-}
 function MemberManager() {
   const [isLoading, setIsLoading] = useState(true);
   const [rows, setRows] = useState([]);
@@ -37,7 +51,6 @@ function MemberManager() {
   async function handleMemberList() {
     try {
       const resp = await axios.get('/api/v1/groups/members');
-      console.log(resp.data)
       setRows(resp.data);
       setIsLoading(false);
     } catch (error) {
@@ -50,19 +63,24 @@ function MemberManager() {
     handleMemberList();
   }, []);
 
+  function updateRowState({ fromRow, toRow, updated }) {
+    const slicedRows = rows.slice();
+      for (let i = fromRow; i <= toRow; i++) {
+        slicedRows[i] = { ...slicedRows[i], ...updated };
+      }
+      setRows(slicedRows)
+  }
+
 
   async function handleOnGridRowsUpdated(value) {
     try {
-      const slicedRows = rows.slice();
-      for (let i = value.fromRow; i <= value.toRow; i++) {
-        slicedRows[i] = { ...slicedRows[i], ...value.updated };
-      }
-      setRows(slicedRows)
+      updateRowState({ fromRow: value.fromRow, toRow: value.toRow, updated: value.updated })
       const resp = await axios.patch(`/api/v1/groups/members/${value.toRowId}`, {
         member: {
           ...value.updated
         }
       });
+      updateRowState({ fromRow: value.fromRow, toRow: value.toRow, updated: resp.data })
       setToast('success', 'Change saved')
     } catch (error) {
       console.log('error', error);
@@ -72,24 +90,37 @@ function MemberManager() {
 
   if(isLoading) { return <h1>Loading Data...</h1>};
 
-  const actions = [
-    {
-      icon: <i className="fas fa-copy"></i>,
-      callback: () => {
-        alert("Copy");
-      },
-    },
-    {
-      icon: <i className="fab fa-whatsapp"></i>,
-      callback: () => {
-        alert("Sending whatsapp");
-      }
-    },
-  ];
+  function copyToClipboard(str) {
+    const el = document.createElement('textarea');
+    // el.classList.add('hidden');
+    el.value = str;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+
+  function actions(column, row) {
+    return [
+        {
+          icon: <i className="fas fa-copy cursor-pointer"></i>,
+          callback: () => {
+            copyToClipboard(row.personal_url);
+            setToast('success', 'Copied')
+          },
+        },
+        {
+          icon: <i className="fab fa-whatsapp cursor-pointer"></i>,
+          callback: () => {
+            window.open(row.whatsapp_url, '_blank')
+          }
+        },
+      ];
+  }
 
   function getCellActions(column, row) {
     const cellActions = {
-      actions: actions
+      actions: actions(column, row)
     };
     return cellActions[column.key];
   }
@@ -97,15 +128,19 @@ function MemberManager() {
 
   const CustomRowRenderer = ({renderBaseRow, ...canvasProps}) => {
     const { row, ...rest } = canvasProps;
+    // console.log('rest', rest)
     return renderBaseRow({row: {
-      actions: "",
+      actions: null,
+      attendance_status: row.attendance_status,
       group_name: row.group.name,
-      full_name: row.full_name,
       first_name: row.first_name,
       last_name: row.last_name,
       email: row.email,
       parsed_phone_number: row.parsed_phone_number,
-      dietary_preference: row.dietary_preference
+      dietary_preference: row.dietary_preference,
+      token: row.token,
+      personal_url: row.personal_url,
+      whatsapp_url: row.whatsapp_url
     }, ...rest});
    }
 
