@@ -31,17 +31,36 @@ export default class extends Controller {
 
     `;
     L.mapbox.accessToken = 'pk.eyJ1IjoiaGVybWFubmhoIiwiYSI6ImNqdjhjMm1heTBlOXU0NG55c3ZqbmlvaTMifQ.TJXMyMhgTFQ_HIeiyZsIzA';
-    var map = L.mapbox.map(this.element)
+    var map = L.mapbox.map(this.element, 'mapbox.streets',{ zoomControl: false })
     .setView(latLng, 13)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-    L.marker(latLng).addTo(map);
-    var popup = L.popup({ closeButton: false })
+
+
+    // L.marker(latLng).addTo(map);
+    var popup = L.popup({ closeButton: false, closeOnClick: false })
     .setLatLng(latLng)
     .setContent(html)
     .openOn(map);
     if (map.scrollWheelZoom) {
       map.scrollWheelZoom.disable();
     }
+    if (map.dragging) {
+      map.dragging.disable();
+    }
+    if (map.touchZoom) {
+      map.touchZoom.disable();
+    }
+    if (map.doubleClickZoom) {
+      map.doubleClickZoom.disable();
+    }
+    if (map.boxZoom) {
+      map.boxZoom.disable();
+    }
+    // if (map.zoomControl) {
+    //   map.zoomControl.removeFrom(map);
+    // // }
+
+    // console.log('map', map.zoomControl)
   }
 
   handleVideoDimensionsSet = () => {

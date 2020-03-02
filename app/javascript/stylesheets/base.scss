@@ -65,6 +65,7 @@ html {
       @apply flex bg-teal-100 rounded px-2 pt-2 pb-4 justify-center items-center shadow;
       &-inner {
         @apply flex bg-teal-300 rounded p-3 justify-center items-center text-xl text-white font-bold;
+        width: 50px;
       }
     }
     &--sub-text{
