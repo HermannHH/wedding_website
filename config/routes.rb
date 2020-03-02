@@ -34,11 +34,7 @@ Rails.application.routes.draw do
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       namespace :groups do
-        resources :members, only: [ :update ], param: :token do
-          member do
-            patch :accept
-            patch :decline
-          end
+        resources :members, only: [ :index, :update ], param: :token do
           resources :songs, only: [ :create ], module: :members
         end
       end

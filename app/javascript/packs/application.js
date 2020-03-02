@@ -26,14 +26,15 @@ Turbolinks.start();
 import "controllers";
 import "notyf/notyf.min.css";
 import "notyf/notyf.min.js";
+import axios from 'axios';
+import "@fortawesome/fontawesome-free/js/all";
+import '@fortawesome/fontawesome-free/scss/fontawesome';
+import '@fortawesome/fontawesome-free/scss/solid';
+import '@fortawesome/fontawesome-free/scss/regular';
+import '@fortawesome/fontawesome-free/scss/brands';
+import '@fortawesome/fontawesome-free/scss/v4-shims';
 
-
-// document.addEventListener('turbolinks:load', function() {
-//   var loadingScreen = document.getElementById('loading-screen');
-//   var bodyContent = document.getElementById('body-content');
-
-//   setTimeout(() => {
-//     loadingScreen.classList.add('hidden');
-//     bodyContent.classList.remove('hidden');
-//   }, 3000);
-// });
+document.addEventListener("turbolinks:load", function() {
+  const csrfToken = document.querySelector('[name=csrf-token]').content;
+  axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+});

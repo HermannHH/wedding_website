@@ -30,6 +30,8 @@ class Group::Member < ApplicationRecord
   # validates :email, presence: true, email: true, uniqueness: { scope: :group_id }
   validates :email, email: true, allow_blank: true
 
+  default_scope { order(id: :asc) }
+
   has_secure_token
 
   def full_name
