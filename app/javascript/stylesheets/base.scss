@@ -132,10 +132,20 @@ html {
 }
 
 #date-banner {
-  @apply w-full py-2 text-center bg-gray-200 text-gray-500;
-  // @extend .pantene-background;
+  display: hidden;
+  @media(min-width: theme('screens.lg')) {
+    @apply w-full py-2 text-center bg-gray-200 text-gray-500 block;
+  }
   @extend .typewriter;
-  // color: #ac4c2d;
+}
+
+#date-banner-small {
+  @apply shadow flex w-full py-1 text-center bg-gray-300 text-gray-600 px-4 items-center justify-between absolute bottom-0 ;
+  @extend .typewriter;
+
+  @media(min-width: theme('screens.lg')) {
+    @apply hidden;
+  }
 }
 
 
@@ -225,7 +235,10 @@ html {
 
 
 %gradientBlur {
-  height: 500px;
+  height: 400px;
+  @media(min-width: theme('screens.md')) {
+    height: 500px;
+  }
   width: 70px;
   position: absolute;
   content: "";
@@ -235,14 +248,20 @@ html {
 
 .image-ticker {
   width: 100vw;
-  height: 500px;
+  height: 350px;
+  @media(min-width: theme('screens.md')) {
+    height: 500px;
+  }
   display: flex;
   align-items: center;
   justify-content: center;
 
   &--track {
     width: 100vw;
-    height: 500px;
+    height: 350px;
+    @media(min-width: theme('screens.md')) {
+      height: 500px;
+    }
     position: relative;
     display: flex;
     overflow: hidden;
