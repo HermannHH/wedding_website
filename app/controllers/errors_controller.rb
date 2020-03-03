@@ -22,5 +22,5 @@ class ErrorsController < ApplicationController
 
   private
 
-  layout 'public'
+  layout 'error'
 end

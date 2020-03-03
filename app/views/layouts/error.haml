@@ -16,14 +16,10 @@
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{:src => "https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.js"}
-    %link{:href => "https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css", :rel => "stylesheet"}
   %body{ data: { controller: "body" }}
     .loading-cover{ data: { target: "body.loader" }}
       .loading-cover--image-wrapper
         = image_tag "https://ik.imagekit.io/nhrknfxy8/icon-pantene_aUHF0cUf4.svg"
       .loading-cover--text
         %div{ data: { target: "body.typed" }}
-        -# .text-3xl.text-gray-600="#hermantha2020"
     %div{ data: { target: "body.content" }}= yield
-    -# = yield

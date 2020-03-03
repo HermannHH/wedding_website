@@ -322,3 +322,28 @@ html {
     transition: all 1s ease-in-out;
     overflow: hidden;
 }
+
+
+.loading-cover {
+  @apply fixed w-full h-screen bg-white flex flex-col z-50 pt-16;
+  @media(min-width: theme('screens.md')) {
+    @apply pt-32;
+  }
+  &--image-wrapper {
+    @apply flex flex-col pb-10;
+    > img {
+      width: 120px;
+      margin: 0 auto;
+    }
+    @media(min-width: theme('screens.md')) {
+      > img {
+        width: 200px;
+      }
+    }
+  }
+
+  &--text {
+    @apply text-center tracking-wide w-full px-4;
+    min-height: 200px;
+  }
+}
