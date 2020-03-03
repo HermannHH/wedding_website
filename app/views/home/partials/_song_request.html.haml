@@ -1,6 +1,6 @@
-.section#song-request
+.section#song-request.z-20
   .section--heading.has-explainer="Request a song"
-  .section--explainer="Search & select as many songs as you'd like to hear (& dance to) on the wedding night."
+  .section--explainer="Search & select as many songs as you'd like to listen (& dance to) on the wedding night. Search results are powered by Itunes."
   .section--content
     %div{ class: "w-11/12 md:w-3/5 lg:w-1/2 mt-6"}
       = react_component('song-library', props: { create_song_request_path: api_v1_groups_member_songs_path(member_token: @current_member.token )}, html_class: "w-full")

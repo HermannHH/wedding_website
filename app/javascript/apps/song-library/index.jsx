@@ -67,11 +67,21 @@ function SongLibrary({ create_song_request_path }) {
     <div className="app">
       <div className="container">
         <Async
+          styles={{
+            menu: () => ({
+              zIndex: 20,
+              position: 'absolute',
+              width: '100%',
+              backgroundColor: "#ffffff",
+              boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
+            })
+          }}
           value={val}
           placeholder="Just start typing..."
           loadOptions={loadOptions}
           onInputChange={handleInputChange}
           onChange={opt => saveSelectedSong(opt.value)}
+          noOptionsMessage={() => "Keep typing to see more results"}
         />
       </div>
     </div>

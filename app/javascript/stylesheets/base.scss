@@ -242,14 +242,14 @@ html {
     align-items: center;
     animation: slideshow 140s linear infinite;
     animation-play-state: running;
-    // cursor: pointer;
-    // &.paused {
-    //   animation-play-state: paused;
-    // }
     &-item {
       @apply bg-white shadow pt-3 px-3 pb-10;
-      height: 300px;
-      width: 300px;
+      height: 200px;
+      width: 200px;
+      @media(min-width: theme('screens.md')) {
+        height: 300px;
+        width: 300px;
+      }
       @for $i from 1 through 24 {
         &:nth-child(#{$i}) {
           z-index: randomNum(1, 20);
