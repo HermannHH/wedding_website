@@ -54,7 +54,8 @@ class Group < ApplicationRecord
           :last_name,
           :email,
           :phone_number,
-          :language
+          :language,
+          :country_code
         )
       )
       member.group = group
@@ -78,7 +79,7 @@ class Group < ApplicationRecord
 
   def self.to_csv
     CSV.generate(headers: true) do |csv|
-      csv << ['group_name', 'first_name', 'last_name', 'email', 'phone_number', 'personal_link', 'language']
+      csv << ['group_name', 'first_name', 'last_name', 'email', 'phone_number', 'personal_link', 'language', 'country_code']
       all.each do |group|
         group.members.each do |member|
           csv << [
@@ -88,7 +89,8 @@ class Group < ApplicationRecord
             member.email,
             member.phone_number,
             member.personal_url,
-            member.language
+            member.language,
+            member.country_code
           ]
         end
       end

@@ -15,6 +15,7 @@
 #  dietary_preference     :text
 #  rsvp_confirmed_at      :datetime
 #  invitation_declined_at :datetime
+#  country_code           :string
 #
 
 # TODO: Add language locale & configure based on views
@@ -72,7 +73,7 @@ class Group::Member < ApplicationRecord
   end
 
   def parsed_phone_number
-    Phonelib.parse(self.phone_number, 'ZA').to_s
+    Phonelib.parse(self.phone_number, self.country_code&.upcase || 'ZA').to_s
   end
 
   def reset!
