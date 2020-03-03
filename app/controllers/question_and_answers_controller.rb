@@ -63,6 +63,8 @@ class QuestionAndAnswersController < ApplicationController
 
   private
 
+    skip_before_action :authenticate_user!
+
     layout 'admin'
     # Use callbacks to share common setup or constraints between actions.
     def set_question_and_answer

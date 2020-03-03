@@ -14,4 +14,6 @@ class QuestionAndAnswer < ApplicationRecord
   validates     :question, presence: true
   validates     :answer, presence: true
 
+  default_scope { order(id: :asc) }
+
 end
