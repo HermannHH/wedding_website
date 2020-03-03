@@ -59,8 +59,8 @@ export default class extends Controller {
     DomUtils.disableScroll();
     var options = {
       strings: [`
-        <p class="text-3xl text-gray-600 leading-10 typewriter">Love, Laughter and Happily Ever After.</p>
-        <p class="text-3xl text-gray-600 leading-10 typewriter">Welcome to our wedding website.</p>
+        <p class="text-3xl text-gray-600 leading-10 typewriter">Love, Laughter and Happily Ever After</p>
+        <p class="text-3xl text-gray-600 leading-10 typewriter">Welcome to our wedding website</p>
         <p class="text-base text-gray-500 mt-2">Hermann and Samantha</p>
         <p class="text-xl typewriter text-pantene mt-4">#hermantha2020</p>`
       ],

@@ -1,7 +1,7 @@
 - if member.not_yet_responded?
   .flex.flex-col
-    = link_to "Accept Invitation", accept_invitation_path(member.token), method: :patch, remote: true, class: "bg-green-200 hover:bg-green-300 text-green-500 hover:text-green-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Accepting..."}
-    = link_to "Decline Invitation", decline_invitation_path(member.token), method: :patch, remote: true, class: "bg-red-200 hover:bg-red-300 text-red-500 hover:text-red-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Declining..."}
+    = link_to "Accept Invitation", accept_invitation_path(member.token), method: :patch, remote: true, class: "border border-green-200 hover:bg-green-300 text-green-500 hover:text-green-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Accepting..."}
+    = link_to "Decline Invitation", decline_invitation_path(member.token), method: :patch, remote: true, class: "border border-red-200 hover:bg-red-300 text-red-500 hover:text-red-600 font-bold my-2 py-2 px-4 rounded w-full text-center", data: { disable_with: "Declining..."}
 - elsif member.has_declined?
   .w-full.flex
     %span.text-base.w-full.text-center.font-medium.bg-red-100.py-1.px-2.rounded.text-red-500.align-middle Sorry that you could not join us

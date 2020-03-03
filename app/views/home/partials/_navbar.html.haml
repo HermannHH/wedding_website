@@ -1,10 +1,12 @@
 -# Navbar
-%nav.navbar.hidden.lg:flex.w-full{ data: { controller: "navbar"}}
+%nav.navbar.hidden.lg:flex.flex-col.w-full{ data: { controller: "navbar"}}
   .hidden{ data: { "target": "navbar.initialOffset"}}
-  .flex.justify-between.w-full
+  .flex.justify-between.w-full.px-4.py-2
     .flex.ml-6.cursor-pointer{ data: { action: "click->navbar#scrollToSection"}}
-      #white-icon= image_tag "https://ik.imagekit.io/nhrknfxy8/icon-white_RkisiFqRH.svg", style: "width:80px;"
-      #dark-icon= image_tag "https://ik.imagekit.io/nhrknfxy8/icon-black_GGf62673l.svg", style: "width:50px;"
+      .logo-wrapper
+        #white-icon= image_tag "https://ik.imagekit.io/nhrknfxy8/icon-white_RkisiFqRH.svg", style: "width:80px;"
+        #dark-icon= image_tag "https://ik.imagekit.io/nhrknfxy8/icon-black_GGf62673l.svg", style: "width:50px;"
+        -# %span="2 May 2020"
     .flex.h-auto.items-center
       = link_to "Our Memories", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#memories"}
       = link_to "Countdown", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#timer-section"}
@@ -13,3 +15,4 @@
       = link_to "Questions", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#questions"}
       = link_to "Request a song", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#song-request"}
       = link_to "Location", "#", class: "link typewriter", data: { action: "click->navbar#scrollToSection", target_hash: "#location"}
+  #date-banner="2 May 2020"

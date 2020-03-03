@@ -93,13 +93,18 @@ html {
 
 
 .navbar {
-  @apply w-full p-4 bg-transparent bottom-0 z-50 absolute z-50;
+  @apply w-full bg-transparent bottom-0 z-50 absolute z-50;
   transition: all 350ms ease-in-out;
-  #white-icon {
-    display: block;
-  }
-  #dark-icon {
-    display: none;
+
+  .logo-wrapper{
+    @apply flex flex-col;
+    #white-icon {
+      display: block;
+      @apply pb-2;
+    }
+    #dark-icon {
+      display: none;
+    }
   }
 
   .link {
@@ -124,6 +129,13 @@ html {
       display: block;
     }
   }
+}
+
+#date-banner {
+  @apply w-full py-2 text-center bg-gray-200 text-gray-500;
+  // @extend .pantene-background;
+  @extend .typewriter;
+  // color: #ac4c2d;
 }
 
 
