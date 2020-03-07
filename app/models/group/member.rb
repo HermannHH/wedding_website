@@ -32,6 +32,8 @@ class Group::Member < ApplicationRecord
   # validates :phone_number, mobile_phone: true, allow_blank: true
   validates :email, email: true, allow_blank: true
 
+  attr_accessor :parsed_phone_number
+
   default_scope { order(id: :asc) }
 
   has_secure_token
@@ -72,7 +74,7 @@ class Group::Member < ApplicationRecord
     !has_declined? && !has_confirmed?
   end
 
-  def parsed_phone_number
+  def standardised_phone_number
     Phonelib.parse(self.phone_number, self.country_code&.upcase || 'ZA').to_s
   end
 
@@ -85,7 +87,15 @@ class Group::Member < ApplicationRecord
   end
 
   def whatsapp_url
-    "https://wa.me/#{self.parsed_phone_number.remove('+')}?text=#{CGI.escape(Rails.application.routes.url_helpers.root_url(gt: self.group.token, token: self.token ))}"
+    "https://wa.me/#{self.standardised_phone_number.remove('+')}?text=#{CGI.escape(Rails.application.routes.url_helpers.root_url(gt: self.group.token, token: self.token ))}"
+  end
+
+
+  before_save :set_phone_number, if: lambda {|object| !object.phone_number.nil?}
+
+
+  def set_phone_number
+    self.phone_number = Phonelib.parse(self.phone_number, self.country_code&.upcase || 'ZA').to_s
   end
 
   # def update_path

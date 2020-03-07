@@ -28,7 +28,7 @@ module Schemas
       methods: [
         :full_name,
         :attendance_status,
-        :parsed_phone_number,
+        :standardised_phone_number,
         :personal_url,
         :whatsapp_url
       ],

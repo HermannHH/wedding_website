@@ -29,7 +29,7 @@ const columns = [
   { key: 'first_name', name: 'First Name', editable: true, resizable: true},
   { key: 'last_name', name: 'Last Name', editable: true, resizable: true},
   { key: 'email', name: 'Email', editable: true, resizable: true },
-  { key: 'parsed_phone_number', name: 'Phone #', editable: true, resizable: true },
+  { key: 'phone_number', name: 'Phone #', editable: true, resizable: true },
   { key: 'dietary_preference', name: 'Dietary Preference', editable: true, resizable: true }
 
   // { key: 'token', name: 'Token', resizable: true  },
@@ -75,6 +75,7 @@ function MemberManager() {
   async function handleOnGridRowsUpdated(value) {
     try {
       updateRowState({ fromRow: value.fromRow, toRow: value.toRow, updated: value.updated })
+      console.log('tt', value.updated)
       const resp = await axios.patch(`/api/v1/groups/members/${value.toRowId}`, {
         member: {
           ...value.updated
@@ -136,7 +137,7 @@ function MemberManager() {
       first_name: row.first_name,
       last_name: row.last_name,
       email: row.email,
-      parsed_phone_number: row.parsed_phone_number,
+      phone_number: row.standardised_phone_number,
       dietary_preference: row.dietary_preference,
       token: row.token,
       personal_url: row.personal_url,
