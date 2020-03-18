@@ -86,11 +86,13 @@ class Group < ApplicationRecord
             group.name,
             member.first_name,
             member.last_name,
-            member.email,
-            member.phone_number,
-            member.personal_url,
-            member.language,
-            member.country_code
+            member.attendance_status,
+            member.standardised_phone_number
+            # member.email,
+            # member.phone_number,
+            # member.personal_url,
+            # member.language,
+            # member.country_code
           ]
         end
       end
