@@ -79,7 +79,7 @@ class Group < ApplicationRecord
 
   def self.to_csv
     CSV.generate(headers: true) do |csv|
-      csv << ['group_name', 'first_name', 'last_name', 'email', 'phone_number', 'personal_link', 'language', 'country_code']
+      csv << ['group_name', 'first_name', 'last_name', 'response', 'phone_number' ]
       all.each do |group|
         group.members.each do |member|
           csv << [
