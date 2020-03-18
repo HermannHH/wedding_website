@@ -3,6 +3,8 @@
   -#   <p>Drag one or more files to this Drop Zone ...</p>
   -# </div>
   .px-6.py-12
+    = link_to "Export", export_groups_path, method: :post, class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+  .px-6.py-12
     = form_tag import_groups_path, multipart: true, remote: true, class: "flex flex-col"  do
       = file_field_tag :file
       = submit_tag "Import", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
